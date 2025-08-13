@@ -14,7 +14,7 @@ export default [
     {
         element: <RootLayout />,
         children: [
-            { index: true, element: <Home /> },
+            { path: '/', element: <Home /> },
             { path: 'services', element: <Service /> },
             { path: 'about', element: <About /> },
             { path: 'gallery', element: <Gallery /> },

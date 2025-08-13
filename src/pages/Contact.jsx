@@ -1,0 +1,109 @@
+import WhatsAppButton from '../fatures/WhatsAppButton'
+
+export default function Contact() {
+    return (
+        <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+            {/* Header */}
+            <section className="relative py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 overflow-hidden">
+                {/* Background Pattern */}
+                <div className="absolute inset-0 opacity-10">
+                    <div className="absolute inset-0" style={{
+                        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3Cpath d='M30 10 L30 50 M10 30 L50 30' stroke='%23ffffff' stroke-width='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+                    }} />
+                </div>
+
+                <div className="relative z-10 text-center">
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 sm:mb-6">
+                        Contact Us
+                    </h1>
+                    <p className="text-lg sm:text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto leading-relaxed px-4">
+                        Get in touch for professional electrical services and support
+                    </p>
+                </div>
+            </section>
+
+            {/* Contact Content */}
+            <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 -mt-8 sm:-mt-12 md:-mt-16 relative z-20">
+                <div className="max-w-7xl mx-auto">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
+                        {/* Contact Information */}
+                        <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 shadow-2xl border border-gray-100">
+                            <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mb-8 sm:mb-12 text-center">
+                                Get In Touch
+                            </h2>
+
+                            <div className="space-y-6 sm:space-y-8">
+                                <div className="flex items-center gap-4 sm:gap-6 p-4 sm:p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl sm:rounded-2xl border border-blue-100 hover:border-blue-200 transition-colors">
+                                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-blue-100 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0">
+                                        <span className="text-xl sm:text-2xl">📍</span>
+                                    </div>
+                                    <div>
+                                        <div className="font-semibold text-gray-900 text-base sm:text-lg mb-1">Address</div>
+                                        <div className="text-sm sm:text-base text-gray-600">123 Industrial Zone, Electrical Street<br />City, State - 123456</div>
+                                    </div>
+                                </div>
+
+                                <div className="flex items-center gap-4 sm:gap-6 p-4 sm:p-6 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl sm:rounded-2xl border border-green-100 hover:border-green-200 transition-colors">
+                                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-green-100 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0">
+                                        <span className="text-xl sm:text-2xl">📞</span>
+                                    </div>
+                                    <div>
+                                        <div className="font-semibold text-gray-900 text-base sm:text-lg mb-1">Phone</div>
+                                        <div className="text-sm sm:text-base text-gray-600">+91 893 962 0577</div>
+                                    </div>
+                                </div>
+
+                                <div className="flex items-center gap-4 sm:gap-6 p-4 sm:p-6 bg-gradient-to-r from-purple-50 to-violet-50 rounded-xl sm:rounded-2xl border border-purple-100 hover:border-purple-200 transition-colors">
+                                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-purple-100 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0">
+                                        <span className="text-xl sm:text-2xl">✉️</span>
+                                    </div>
+                                    <div>
+                                        <div className="font-semibold text-gray-900 text-base sm:text-lg mb-1">Email</div>
+                                        <div className="text-sm sm:text-base text-gray-600">info@powertech.com</div>
+                                    </div>
+                                </div>
+
+                                <div className="flex items-center gap-4 sm:gap-6 p-4 sm:p-6 bg-gradient-to-r from-orange-50 to-amber-50 rounded-xl sm:rounded-2xl border border-orange-100 hover:border-orange-200 transition-colors">
+                                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-orange-100 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0">
+                                        <span className="text-xl sm:text-2xl">🕒</span>
+                                    </div>
+                                    <div>
+                                        <div className="font-semibold text-gray-900 text-base sm:text-lg mb-1">Business Hours</div>
+                                        <div className="text-sm sm:text-base text-gray-600">Mon - Sat: 8:00 AM - 8:00 PM<br />Sunday: Emergency Only</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* WhatsApp Section */}
+                        <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 shadow-2xl border border-gray-100">
+                            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 text-center">
+                                Quick WhatsApp Support
+                            </h3>
+                            <p className="text-sm sm:text-base text-gray-600 mb-6 sm:mb-8 text-center leading-relaxed">
+                                For immediate assistance, technical queries, or to get a quick quote,
+                                contact us directly on WhatsApp. Our team responds within minutes!
+                            </p>
+
+                            <div className="text-center">
+                                <WhatsAppButton message="Hello! I need information about your electrical services">
+                                    <button className="group inline-flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-green-500 to-emerald-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 hover:from-green-600 hover:to-emerald-600">
+                                        <span className="text-lg sm:text-xl">💬</span>
+                                        Chat on WhatsApp
+                                        <svg className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                        </svg>
+                                    </button>
+                                </WhatsAppButton>
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    )
+}
+
+

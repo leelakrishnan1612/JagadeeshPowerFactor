@@ -62,7 +62,7 @@ export default function Navbar() {
               Services
             </NavLink>
             <NavLink 
-              to="/gallery" 
+              to="/project" 
               className={({ isActive }) => 
                 `px-4 py-2 rounded-xl font-medium transition-all duration-200 ${
                   isActive 
@@ -71,7 +71,7 @@ export default function Navbar() {
                 }`
               }
             >
-              Gallery
+              Projects
             </NavLink>
             <NavLink 
               to="/contact" 
@@ -160,7 +160,7 @@ export default function Navbar() {
                 }
                 onClick={closeMobileMenu}
               >
-                Gallery
+                Projects
               </NavLink>
               <NavLink 
                 to="/contact" 

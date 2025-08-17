@@ -83,7 +83,8 @@ export default function Footer() {
                 </div>
                 <div>
                   <p className="text-xs text-gray-300 font-medium">Address</p>
-                  <p className="text-xs text-gray-400">123 Industrial Zone, Electrical Street</p>
+                  <p className="text-xs text-gray-400">No.318/30 , Thiruvallur Road, Edapalayam ,TamilNadu, 600 052.
+                  </p>
                 </div>
               </div>
               <div className="flex items-start gap-2 group/item">
@@ -92,7 +93,8 @@ export default function Footer() {
                 </div>
                 <div>
                   <p className="text-xs text-gray-300 font-medium">Phone</p>
-                  <p className="text-xs text-gray-400">+91 893 962 0577</p>
+                  <p className="text-xs text-gray-400">+91 82486 36570 , +91 94446 04613</p>
+                 
                 </div>
               </div>
               <div className="flex items-start gap-2 group/item">
@@ -101,7 +103,7 @@ export default function Footer() {
                 </div>
                 <div>
                   <p className="text-xs text-gray-300 font-medium">Email</p>
-                  <p className="text-xs text-gray-400">info@jagadeeshpowerfactor.com</p>
+                  <p className="text-xs text-gray-400">jagadeeshpowerfactor@gmail.com</p>
                 </div>
               </div>
               <div className="flex items-start gap-2 group/item">
@@ -118,36 +120,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-4 border-t border-white/20 text-center">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 mb-3">
-            <div className="flex items-center gap-2">
-              <div className="w-4 h-4 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-lg flex items-center justify-center">
-                <span className="text-xs">⚡</span>
-              </div>
-              <p className="text-xs sm:text-sm text-white font-medium">Jagadeesh PowerFactor</p>
-            </div>
-            <div className="flex gap-3 text-xs text-gray-400">
-              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-              <a href="#" className="hover:text-white transition-colors">Cookie Policy</a>
-            </div>
-          </div>
-          <p className="text-xs text-gray-400 mb-1">© {new Date().getFullYear()} Jagadeesh PowerFactor. All rights reserved.</p>
-          <div className="flex flex-wrap justify-center gap-2 text-xs text-gray-500">
-            <span className="flex items-center gap-1">
-              <div className="w-1 h-1 bg-green-500 rounded-full"></div>
-              Certified Electrical Contractors
-            </span>
-            <span className="flex items-center gap-1">
-              <div className="w-1 h-1 bg-blue-500 rounded-full"></div>
-              ISO 9001:2015
-            </span>
-            <span className="flex items-center gap-1">
-              <div className="w-1 h-1 bg-purple-500 rounded-full"></div>
-              Licensed & Insured
-            </span>
-          </div>
-        </div>
+       
       </div>
     </footer>
   )

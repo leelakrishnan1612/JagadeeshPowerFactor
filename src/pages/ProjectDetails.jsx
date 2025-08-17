@@ -9,256 +9,170 @@ export default function ProjectDetails() {
   const [isGeneratingPDF, setIsGeneratingPDF] = useState(false)
   const [loading, setLoading] = useState(true)
 
-  // Placeholder data for gallery images - replace with actual client photos later
-  const galleryImages = [
+  // Updated gallery images structure to match your Gallery component
+  // Updated Gallery Data Structure with Unique IDs
+const galleryImagesBySite = {
+  1: [ // Site 1 - Industrial Complex (MNO Engineering Works)
     {
-      id: 1,
-      title: 'HT Panel Installation',
-      category: 'HT Panels',
-      description: '11kV panel installation at industrial facility',
-      imageUrl: '/placeholder-ht-panel.jpg', // Replace with actual image path
-      isPlaceholder: true,
-      // Additional details for modal
-      fullDescription: 'Complete 11kV High Tension panel installation at ABC Industrial Facility. This project involved custom panel design, installation, testing, and commissioning. The panel includes VCB circuit breakers, protection relays, and advanced monitoring systems.',
-      location: 'ABC Industrial Facility, Chennai',
-      completionDate: 'March 2024',
-      duration: '3 weeks',
-      teamSize: '5 engineers',
-      challenges: 'Custom panel design requirements, tight timeline',
-      solutions: 'Modular design approach, parallel work streams',
-      additionalPhotos: [
-        { id: 1, title: 'Panel Design Phase', description: 'Initial design and layout planning' },
-        { id: 2, title: 'Installation Process', description: 'Panel mounting and wiring' },
-        { id: 3, title: 'Testing Phase', description: 'Load testing and commissioning' },
-        { id: 4, title: 'Final Installation', description: 'Completed panel installation' }
-      ]
-    },
-    {
-      id: 2,
-      title: 'LT Panel Setup',
-      category: 'LT Panels',
-      description: 'PCC panel installation and commissioning',
-      imageUrl: '/placeholder-lt-panel.jpg',
-      isPlaceholder: true,
-      fullDescription: 'Power Control Center (PCC) panel installation for XYZ Manufacturing Unit. The project included MCC integration, APFC system, and distribution board setup. Successfully completed with zero downtime.',
-      location: 'XYZ Manufacturing Unit, Bangalore',
-      completionDate: 'February 2024',
-      duration: '2 weeks',
-      teamSize: '3 engineers',
-      challenges: 'Working during production hours',
-      solutions: 'Night shift installation, temporary power arrangements',
-      additionalPhotos: [
-        { id: 1, title: 'PCC Panel', description: 'Main power control center' },
-        { id: 2, title: 'MCC Integration', description: 'Motor control center setup' },
-        { id: 3, title: 'APFC System', description: 'Power factor correction' }
-      ]
-    },
-    {
-      id: 3,
-      title: 'Transformer Installation',
-      category: 'Transformers',
-      description: '500kVA transformer installation',
-      imageUrl: '/placeholder-transformer.jpg',
-      isPlaceholder: true,
-      fullDescription: '500kVA oil-cooled transformer installation at DEF Commercial Complex. Complete project including foundation preparation, transformer mounting, oil testing, and load testing.',
-      location: 'DEF Commercial Complex, Mumbai',
-      completionDate: 'January 2024',
-      duration: '4 weeks',
-      teamSize: '4 engineers',
-      challenges: 'Heavy equipment handling, space constraints',
-      solutions: 'Crane coordination, custom mounting structure',
-      additionalPhotos: [
-        { id: 1, title: 'Foundation Work', description: 'Transformer foundation preparation' },
-        { id: 2, title: 'Installation', description: 'Transformer mounting process' },
-        { id: 3, title: 'Oil Testing', description: 'Transformer oil analysis' },
-        { id: 4, title: 'Load Testing', description: 'Performance testing phase' }
-      ]
-    },
-    {
-      id: 4,
-      title: 'Switchgear Maintenance',
-      category: 'Maintenance',
-      description: 'ACB maintenance and testing',
-      imageUrl: '/placeholder-switchgear.jpg',
-      isPlaceholder: true,
-      fullDescription: 'Annual maintenance of Air Circuit Breakers (ACB) at GHI Power Plant. Comprehensive maintenance including contact cleaning, thermal imaging, and performance testing.',
-      location: 'GHI Power Plant, Delhi',
-      completionDate: 'December 2023',
-      duration: '1 week',
-      teamSize: '2 engineers',
-      challenges: 'Scheduled maintenance during peak hours',
-      solutions: 'Coordinated shutdown, backup systems',
-      additionalPhotos: [
-        { id: 1, title: 'ACB Inspection', description: 'Circuit breaker examination' },
-        { id: 2, title: 'Contact Cleaning', description: 'Contact maintenance work' },
-        { id: 3, title: 'Thermal Imaging', description: 'Temperature analysis' }
-      ]
-    },
-    {
-      id: 5,
-      title: 'APFC Panel',
-      category: 'LT Panels',
-      description: 'Auto Power Factor Correction panel',
-      imageUrl: '/placeholder-apfc.jpg',
-      isPlaceholder: true,
-      fullDescription: 'Custom APFC panel design and installation for JKL Textile Mill. Advanced power factor correction system with automatic switching and monitoring capabilities.',
-      location: 'JKL Textile Mill, Ahmedabad',
-      completionDate: 'November 2023',
-      duration: '2.5 weeks',
-      teamSize: '3 engineers',
-      challenges: 'Custom design requirements, power quality issues',
-      solutions: 'Advanced APFC algorithms, real-time monitoring',
-      additionalPhotos: [
-        { id: 1, title: 'Panel Design', description: 'Custom APFC panel layout' },
-        { id: 2, title: 'Installation', description: 'Panel mounting and wiring' },
-        { id: 3, title: 'Testing', description: 'Power factor correction testing' }
-      ]
-    },
-    {
-      id: 6,
+      id: 6,  // Unique ID for Site 1 MCC Panel
       title: 'MCC Panel',
       category: 'LT Panels',
-      description: 'Motor Control Center panel',
+      description: 'Motor Control Center panel for MNO Engineering Works',
       imageUrl: '/placeholder-mcc.jpg',
       isPlaceholder: true,
-      fullDescription: 'Motor Control Center panel installation for MNO Engineering Works. Includes motor starters, overload protection, and control systems for multiple motors.',
-      location: 'MNO Engineering Works, Pune',
+      fullDescription: 'Motor Control Center panel installation for MNO Engineering Works, Chennai. Includes motor starters, overload protection, and control systems for multiple motors in the industrial facility.',
+      location: 'MNO Engineering Works, Chennai, Tamil Nadu',
       completionDate: 'October 2023',
       duration: '3 weeks',
       teamSize: '4 engineers',
-      challenges: 'Multiple motor coordination, control system integration',
-      solutions: 'Modular MCC design, advanced control logic',
+      challenges: 'Multiple motor coordination, control system integration in existing industrial setup',
+      solutions: 'Modular MCC design, advanced control logic implementation, seamless integration with existing systems',
       additionalPhotos: [
-        { id: 1, title: 'MCC Layout', description: 'Motor control center design' },
-        { id: 2, title: 'Motor Starters', description: 'Individual motor control units' },
-        { id: 3, title: 'Control System', description: 'Central control integration' }
+        { id: 1, title: 'MCC Layout Design', description: 'Motor control center design and planning phase' },
+        { id: 2, title: 'Motor Starters Installation', description: 'Individual motor control units installation' },
+        { id: 3, title: 'Control System Integration', description: 'Central control system integration and testing' },
+        { id: 4, title: 'Final Commissioning', description: 'Complete system testing and handover' }
       ]
     },
     {
-      id: 7,
-      title: 'Testing & Commissioning',
-      category: 'Testing',
-      description: 'Load testing and commissioning',
-      imageUrl: '/placeholder-testing.jpg',
-      isPlaceholder: true,
-      fullDescription: 'Comprehensive testing and commissioning services for PQR Industrial Complex. Includes insulation testing, earth resistance testing, and load flow analysis.',
-      location: 'PQR Industrial Complex, Hyderabad',
-      completionDate: 'September 2023',
-      duration: '2 weeks',
-      teamSize: '3 engineers',
-      challenges: 'Complex system integration, multiple equipment types',
-      solutions: 'Systematic testing approach, detailed documentation',
-      additionalPhotos: [
-        { id: 1, title: 'Insulation Testing', description: 'Electrical insulation verification' },
-        { id: 2, title: 'Earth Testing', description: 'Ground resistance measurement' },
-        { id: 3, title: 'Load Testing', description: 'System performance testing' }
-      ]
-    },
-    {
-      id: 8,
+      id: 8,  // Unique ID for Site 1 Emergency Repair
       title: 'Emergency Repair',
       category: 'Maintenance',
-      description: 'Emergency switchgear repair',
+      description: 'Emergency switchgear repair services',
       imageUrl: '/placeholder-repair.jpg',
       isPlaceholder: true,
-      fullDescription: 'Emergency repair of critical switchgear failure at STU Manufacturing Plant. 24/7 emergency response with minimal downtime.',
-      location: 'STU Manufacturing Plant, Kolkata',
+      fullDescription: 'Emergency repair of critical switchgear failure at MNO Engineering Works industrial complex. 24/7 emergency response with minimal production downtime to ensure business continuity.',
+      location: 'MNO Engineering Works, Chennai, Tamil Nadu',
       completionDate: 'August 2023',
       duration: '3 days',
       teamSize: '2 engineers',
-      challenges: 'Critical system failure, production impact',
-      solutions: 'Emergency parts procurement, round-the-clock work',
+      challenges: 'Critical system failure during peak production, urgent timeline, parts availability',
+      solutions: 'Emergency parts procurement from Chennai suppliers, round-the-clock repair work, temporary bypass systems',
       additionalPhotos: [
-        { id: 1, title: 'Fault Analysis', description: 'Switchgear failure investigation' },
-        { id: 2, title: 'Repair Process', description: 'Emergency repair work' },
-        { id: 3, title: 'Testing', description: 'Post-repair verification' }
+        { id: 1, title: 'Fault Analysis', description: 'Comprehensive switchgear failure investigation' },
+        { id: 2, title: 'Emergency Repair Work', description: '24/7 emergency repair operations' },
+        { id: 3, title: 'System Testing', description: 'Post-repair verification and load testing' },
+        { id: 4, title: 'Documentation', description: 'Complete repair documentation and handover' }
       ]
     },
     {
-      id: 9,
+      id: 9,  // Unique ID for Site 1 Panel Design
       title: 'Panel Design',
       category: 'Design',
-      description: 'Custom panel design and layout',
+      description: 'Custom panel design and layout for industrial facility',
       imageUrl: '/placeholder-design.jpg',
       isPlaceholder: true,
-      fullDescription: 'Custom electrical panel design for VWX Research Facility. Advanced design including 3D modeling, thermal analysis, and compliance verification.',
-      location: 'VWX Research Facility, Bangalore',
+      fullDescription: 'Custom electrical panel design for MNO Engineering Works industrial complex. Advanced design including 3D modeling, thermal analysis, and compliance verification according to Indian standards.',
+      location: 'MNO Engineering Works, Chennai, Tamil Nadu',
       completionDate: 'July 2023',
       duration: '4 weeks',
       teamSize: '2 engineers',
-      challenges: 'Complex design requirements, compliance standards',
-      solutions: '3D modeling software, thermal analysis tools',
+      challenges: 'Complex industrial design requirements, Tamil Nadu electricity board compliance, space constraints',
+      solutions: '3D modeling software utilization, thermal analysis tools, modular design approach for easy maintenance',
       additionalPhotos: [
-        { id: 1, title: '3D Design', description: 'Panel 3D modeling' },
-        { id: 2, title: 'Thermal Analysis', description: 'Heat dissipation study' },
-        { id: 3, title: 'Layout Planning', description: 'Component arrangement' }
-      ]
-    },
-    {
-      id: 10,
-      title: 'Quality Inspection',
-      category: 'Testing',
-      description: 'Final quality inspection',
-      imageUrl: '/placeholder-inspection.jpg',
-      isPlaceholder: true,
-      fullDescription: 'Final quality inspection and certification for YZA Power Station. Comprehensive inspection including safety checks, performance verification, and documentation.',
-      location: 'YZA Power Station, Chennai',
-      completionDate: 'June 2023',
-      duration: '1 week',
-      teamSize: '3 engineers',
-      challenges: 'High safety standards, regulatory compliance',
-      solutions: 'Detailed inspection checklist, third-party verification',
-      additionalPhotos: [
-        { id: 1, title: 'Safety Checks', description: 'Safety system verification' },
-        { id: 2, title: 'Performance Test', description: 'System performance verification' },
-        { id: 3, title: 'Documentation', description: 'Final documentation review' }
-      ]
-    },
-    {
-      id: 11,
-      title: 'Site Survey',
-      category: 'Planning',
-      description: 'Electrical site survey',
-      imageUrl: '/placeholder-survey.jpg',
-      isPlaceholder: true,
-      fullDescription: 'Comprehensive electrical site survey for BCD Industrial Park. Detailed assessment including load analysis, infrastructure evaluation, and project planning.',
-      location: 'BCD Industrial Park, Mumbai',
-      completionDate: 'May 2023',
-      duration: '1 week',
-      teamSize: '2 engineers',
-      challenges: 'Large facility, multiple buildings',
-      solutions: 'Systematic survey approach, detailed documentation',
-      additionalPhotos: [
-        { id: 1, title: 'Site Assessment', description: 'Overall site evaluation' },
-        { id: 2, title: 'Load Analysis', description: 'Electrical load assessment' },
-        { id: 3, title: 'Infrastructure', description: 'Existing infrastructure review' }
-      ]
-    },
-    {
-      id: 12,
-      title: 'Commissioning',
-      category: 'Testing',
-      description: 'System commissioning process',
-      imageUrl: '/placeholder-commissioning.jpg',
-      isPlaceholder: true,
-      fullDescription: 'Complete system commissioning for EFG Manufacturing Unit. Includes system integration, performance testing, and operator training.',
-      location: 'EFG Manufacturing Unit, Pune',
-      completionDate: 'April 2023',
-      duration: '2 weeks',
-      teamSize: '4 engineers',
-      challenges: 'System integration complexity, operator training',
-      solutions: 'Phased commissioning, comprehensive training program',
-      additionalPhotos: [
-        { id: 1, title: 'Integration', description: 'System integration process' },
-        { id: 2, title: 'Testing', description: 'Performance testing phase' },
-        { id: 3, title: 'Training', description: 'Operator training session' }
+        { id: 1, title: '3D Panel Design', description: 'Advanced 3D modeling and visualization' },
+        { id: 2, title: 'Thermal Analysis', description: 'Heat dissipation study and cooling system design' },
+        { id: 3, title: 'Layout Planning', description: 'Optimal component arrangement and accessibility' },
+        { id: 4, title: 'Compliance Verification', description: 'Standards compliance and safety verification' }
       ]
     }
-  ];
+  ],
+  2: [ // Site 2 - Commercial Plaza
+    {
+      id: 106,  // CHANGED: Unique ID for Site 2 MCC Panel (was 6, now 106)
+      title: 'MCC Panel',
+      category: 'LT Panels',
+      description: 'Motor Control Center panel for ABC Commercial Plaza',
+      imageUrl: '/placeholder-mcc.jpg',
+      isPlaceholder: true,
+      fullDescription: 'Motor Control Center panel installation for ABC Commercial Plaza, Mumbai. Commercial-grade motor control systems with enhanced safety features and monitoring capabilities for the commercial complex.',
+      location: 'ABC Commercial Plaza, Mumbai, Maharashtra', // CHANGED: Different location
+      completionDate: 'December 2023', // CHANGED: Different date
+      duration: '4 weeks', // CHANGED: Different duration
+      teamSize: '5 engineers', // CHANGED: Different team size
+      challenges: 'Commercial building regulations compliance, integration with building management system, 24/7 operational requirements',
+      solutions: 'gdg',
+      additionalPhotos: [
+        { id: 1, title: 'Commercial MCC Design', description: 'Commercial-grade motor control center design' },
+        { id: 2, title: 'BMS Integration', description: 'Building management system integration' },
+        { id: 3, title: 'Safety Systems', description: 'Enhanced safety and monitoring systems' },
+        { id: 4, title: 'Final Testing', description: 'Comprehensive testing and commissioning' }
+      ]
+    },
+    {
+      id: 108,  // CHANGED: Unique ID for Site 2 Emergency Repair (was 8, now 108)
+      title: 'Emergency Repair',
+      category: 'Maintenance',
+      description: 'Emergency electrical system repair services',
+      imageUrl: '/placeholder-repair.jpg',
+      isPlaceholder: true,
+      fullDescription: 'Emergency repair services for ABC Commercial Plaza electrical systems. Quick response team deployment to minimize business disruption and ensure continuous operations.',
+      location: 'ABC Commercial Plaza, Mumbai, Maharashtra',
+      completionDate: 'November 2023',
+      duration: '2 days',
+      teamSize: '3 engineers',
+      challenges: 'Minimal business disruption, working in occupied commercial space, coordination with multiple tenants',
+      solutions: 'Phased repair approach, temporary power arrangements, 24/7 coordination with building management',
+      additionalPhotos: [
+        { id: 1, title: 'System Diagnosis', description: 'Rapid fault identification and analysis' },
+        { id: 2, title: 'Repair Execution', description: 'Efficient repair with minimal disruption' },
+        { id: 3, title: 'System Restoration', description: 'Full system restoration and testing' },
+        { id: 4, title: 'Documentation', description: 'Complete repair documentation and preventive recommendations' }
+      ]
+    },
+    {
+      id: 109,  // CHANGED: Unique ID for Site 2 Panel Design (was 9, now 109)
+      title: 'Panel Design',
+      category: 'Design',
+      description: 'Custom commercial electrical panel design',
+      imageUrl: '/placeholder-design.jpg',
+      isPlaceholder: true,
+      fullDescription: 'Custom electrical panel design for ABC Commercial Plaza. Modern commercial-grade design with focus on energy efficiency, monitoring capabilities, and compliance with commercial building standards.',
+      location: 'ABC Commercial Plaza, Mumbai, Maharashtra',
+      completionDate: 'September 2023',
+      duration: '5 weeks',
+      teamSize: '3 engineers',
+      challenges: 'Commercial building codes compliance, energy efficiency requirements, integration with existing infrastructure',
+      solutions: 'Energy-efficient design, smart monitoring systems, phased implementation approach',
+      additionalPhotos: [
+        { id: 1, title: 'Commercial Panel Design', description: 'Energy-efficient commercial panel design' },
+        { id: 2, title: 'Smart Systems', description: 'Smart monitoring and control systems' },
+        { id: 3, title: 'Energy Analysis', description: 'Energy efficiency optimization' },
+        { id: 4, title: 'Code Compliance', description: 'Commercial building standards compliance verification' }
+      ]
+    },
+    {
+      id: 110,  // NEW: Additional project for Site 2
+      title: 'HT Switchgear',
+      category: 'HT Panels',
+      description: 'High Tension switchgear installation',
+      imageUrl: '/placeholder-ht.jpg',
+      isPlaceholder: true,
+      fullDescription: 'High Tension switchgear installation for ABC Commercial Plaza, Mumbai. Complete electrical distribution system for multi-story commercial complex with enhanced safety and monitoring features.',
+      location: 'ABC Commercial Plaza, Mumbai, Maharashtra',
+      completionDate: 'January 2024',
+      duration: '6 weeks',
+      teamSize: '6 engineers',
+      challenges: 'High voltage safety protocols, complex installation in occupied building, coordination with utility providers',
+      solutions: 'Phased installation approach, advanced safety measures, minimal disruption scheduling, utility coordination',
+      additionalPhotos: [
+        { id: 1, title: 'HT Panel Installation', description: 'High tension switchgear setup and installation' },
+        { id: 2, title: 'Safety Protocols', description: 'Advanced safety measures and testing procedures' },
+        { id: 3, title: 'System Integration', description: 'Integration with existing electrical infrastructure' },
+        { id: 4, title: 'Final Commissioning', description: 'Comprehensive system testing and commissioning' }
+      ]
+    }
+  ]
+};
 
   useEffect(() => {
-    // Find the project based on the ID from URL params
-    const foundProject = galleryImages.find(img => img.id === parseInt(projectId))
+    // Search through all sites to find the project
+    let foundProject = null;
+    
+    // Flatten all projects from all sites and search
+    const allProjects = Object.values(galleryImagesBySite).flat();
+    foundProject = allProjects.find(project => project.id === parseInt(projectId));
+    
     if (foundProject) {
       setProject(foundProject)
     }
@@ -450,15 +364,19 @@ export default function ProjectDetails() {
     );
   }
 
+  // If project not found, show error message
   if (!project) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Project Not Found</h1>
-          <p className="text-gray-600 mb-8">The project you're looking for doesn't exist.</p>
-          <Link 
-            to="/gallery" 
-            className="px-6 py-3 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition-colors"
+          <div className="text-6xl text-gray-300 mb-4">🔍</div>
+          <h3 className="text-xl font-semibold text-gray-700 mb-2">Project Not Found</h3>
+          <p className="text-gray-500 mb-6">
+            The project you're looking for doesn't exist or may have been removed.
+          </p>
+          <Link
+            to="/gallery"
+            className="px-6 py-3 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition-colors inline-block"
           >
             Back to Gallery
           </Link>
@@ -470,42 +388,36 @@ export default function ProjectDetails() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
       {/* Header */}
-      <section className="relative py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3Cpath d='M30 10 L30 50 M10 30 L50 30' stroke='%23ffffff' stroke-width='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-          }} />
-        </div>
-        
-        <div className="relative z-10 text-center">
+      <div className="bg-gradient-to-r from-blue-900 to-blue-700 pt-20 pb-32 px-4 sm:px-6">
+        <div className="max-w-6xl mx-auto text-center">
           <div className="mb-6">
-            <Link 
-              to="/gallery" 
-              className="inline-flex items-center text-blue-100 hover:text-white transition-colors mb-4"
+            <Link
+              to="/gallery"
+              className="inline-flex items-center text-blue-200 hover:text-white transition-colors"
             >
-              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
+              <span className="mr-2">←</span>
               Back to Gallery
             </Link>
           </div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 sm:mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
             {project.title}
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto leading-relaxed px-4">
+          <p className="text-lg sm:text-xl text-blue-100 max-w-3xl mx-auto">
             {project.description}
           </p>
-          <div className="flex flex-wrap justify-center gap-3 mt-6">
-            <span className="px-4 py-2 bg-white bg-opacity-20 text-white text-sm font-medium rounded-full backdrop-blur-sm">
-              {project.category}
+          <div className="mt-6 flex flex-wrap justify-center gap-4 text-sm text-blue-200">
+            <span className="bg-blue-800 bg-opacity-50 px-3 py-1 rounded-full">
+              📍 {project.location.split(',')[0]}
             </span>
-            <span className="px-4 py-2 bg-white bg-opacity-20 text-white text-sm font-medium rounded-full backdrop-blur-sm">
-              Project #{project.id.toString().padStart(3, '0')}
+            <span className="bg-blue-800 bg-opacity-50 px-3 py-1 rounded-full">
+              📅 {project.completionDate}
+            </span>
+            <span className="bg-blue-800 bg-opacity-50 px-3 py-1 rounded-full">
+              🏷️ {project.category}
             </span>
           </div>
         </div>
-      </section>
+      </div>
 
       {/* Project Content */}
       <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 -mt-8 sm:-mt-12 md:-mt-16 relative z-20">
@@ -602,9 +514,7 @@ export default function ProjectDetails() {
                   </>
                 )}
               </button>
-              <button className="px-8 py-4 bg-green-600 text-white rounded-full font-medium hover:bg-green-700 transition-colors text-lg">
-                Request Similar Project
-              </button>
+              
               <button 
                 onClick={() => shareProject(project)}
                 className="px-8 py-4 bg-gray-600 text-white rounded-full font-medium hover:bg-gray-700 transition-colors flex items-center justify-center gap-3 text-lg"

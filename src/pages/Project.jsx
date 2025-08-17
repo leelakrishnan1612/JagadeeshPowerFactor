@@ -18,23 +18,21 @@ export default function Project() {
       keyFeatures: ["MCC Panel Installation", "Emergency Repair Systems", "Custom Panel Design"],
       projects: ["MCC Panel", "Emergency Repair", "Panel Design"]
     },
-    // {
-    //   siteId: 2,
-    //   siteName: "Commercial Plaza",
-    //   location: "Mumbai, Maharashtra", 
-    //   completionYear: "2024",
-    //   totalProjects: 4,
-    //   category: "Commercial",
-    //   description: "Modern electrical systems for commercial complex",
-    //   imageUrl: '/placeholder-commercial.jpg',
-    //   isPlaceholder: true,
-    //   clientName: "ABC Commercial Ltd",
-    //   projectValue: "₹45 Lakhs",
-    //   keyFeatures: ["HT Panel Installation", "APFC Systems", "Load Testing"],
-    //   projects: ["HT Panel", "APFC System", "Transformer Setup"]
-    // },
-
-
+    {
+      siteId: 2,
+      siteName: "Commercial Plaza",
+      location: "Mumbai, Maharashtra", 
+      completionYear: "2024",
+      totalProjects: 4,
+      category: "Commercial",
+      description: "Modern electrical systems for commercial complex",
+      imageUrl: '/placeholder-commercial.jpg',
+      isPlaceholder: true,
+      clientName: "ABC Commercial Ltd",
+      projectValue: "₹45 Lakhs",
+      keyFeatures: ["HT Panel Installation", "APFC Systems", "Load Testing"],
+      projects: ["HT Panel", "APFC System", "Transformer Setup"]
+    },
   ];
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -59,6 +57,13 @@ export default function Project() {
     if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
     }
+  };
+
+  // Function to navigate to gallery for specific site
+  const navigateToGallery = (siteId) => {
+    // In a real app with React Router, you'd use navigate(`/gallery?site=${siteId}`)
+    // For now, we'll simulate by updating the URL
+    window.location.href = `/gallery?site=${siteId}`;
   };
 
   return (
@@ -160,12 +165,12 @@ export default function Project() {
                           </span>
                         ))}
                       </div>
-                      <a
-                        href={`/gallery?site=${site.siteId}`}
+                      <button
+                        onClick={() => navigateToGallery(site.siteId)}
                         className="px-4 py-2 bg-white text-gray-900 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors inline-block"
                       >
                         View All Projects
-                      </a>
+                      </button>
                     </div>
                   </div>
                 </div>

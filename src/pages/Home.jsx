@@ -22,7 +22,7 @@ export default function Home() {
                     </h1>
 
                     <p className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-4">
-                        Professional <strong className="text-blue-600">HT/LT panel services</strong>, transformer maintenance,
+                        Professional <strong className="text-blue-600">HT/LT panel & services </strong>, transformer maintenance,
                         and comprehensive electrical solutions for your business needs.
                     </p>
 
@@ -47,10 +47,9 @@ export default function Home() {
                             <div className="w-14 h-14 sm:w-16 sm:h-16 bg-blue-100 rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-blue-200 transition-colors">
                                 <span className="text-2xl sm:text-3xl">🔌</span>
                             </div>
-                            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">Expert Panel Services</h3>
+                            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">Experience in Panel Services</h3>
                             <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                                Specialized in <strong className="text-blue-600">HT/LT panel design</strong>, installation, and maintenance.
-                                Our certified engineers ensure optimal performance and safety.
+                                Specialized in <strong className="text-blue-600">HT/LT panel design</strong>,  installation, and maintenance, ensuring full compliance with all safety and quality standards.
                             </p>
                         </div>
 
@@ -59,10 +58,10 @@ export default function Home() {
                             <div className="w-14 h-14 sm:w-16 sm:h-16 bg-green-100 rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-green-200 transition-colors">
                                 <span className="text-2xl sm:text-3xl">⚡</span>
                             </div>
-                            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">24/7 Support</h3>
+                            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">Support</h3>
                             <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                                Round-the-clock emergency electrical services to minimize downtime
-                                and keep your operations running smoothly.
+                                We also provide complete assistance for TNEB procedures and CIEG-related approvals whenever required by the customer.
+
                             </p>
                         </div>
 
@@ -71,34 +70,31 @@ export default function Home() {
                             <div className="w-14 h-14 sm:w-16 sm:h-16 bg-purple-100 rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-purple-200 transition-colors">
                                 <span className="text-2xl sm:text-3xl">🛠️</span>
                             </div>
-                            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">Preventive Care</h3>
+                            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">service  Care</h3>
                             <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                                Comprehensive <strong className="text-blue-600">AMC packages</strong> to prevent electrical failures,
-                                extend equipment lifespan, and ensure compliance.
+                                We provide <strong className="text-blue-600">one year of free service from the date of delivery</strong> on all products installed.
                             </p>
+
                         </div>
                     </div>
                 </div>
             </section>
 
             {/* Stats Section */}
-            <section className="py-16 sm:py-20 px-4 sm:px-6 bg-gradient-to-r from-blue-600 to-indigo-600">
-                <div className="max-w-7xl mx-auto">
+            <section className="py-16 sm:py-20 px-4 sm:px-4 bg-gradient-to-r from-blue-600 to-indigo-600">
+                <div className="max-w-7xl ml-auto">
                     <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-center">
                         <div className="text-white">
-                            <div className="text-3xl sm:text-4xl font-black mb-2">500+</div>
-                            <div className="text-sm sm:text-base text-blue-100">Projects Completed</div>
+                            <div className="text-3xl sm:text-4xl font-black mb-2">5+</div>
+                            <div className="text-sm sm:text-base text-blue-100">HT Projects Completed</div>
                         </div>
                         <div className="text-white">
-                            <div className="text-3xl sm:text-4xl font-black mb-2">50+</div>
-                            <div className="text-sm sm:text-base text-blue-100">Expert Engineers</div>
+                            <div className="text-3xl sm:text-4xl font-black mb-2">10+</div>
+                            <div className="text-sm sm:text-base text-blue-100">Field Workers</div>
                         </div>
+                        
                         <div className="text-white">
-                            <div className="text-3xl sm:text-4xl font-black mb-2">24/7</div>
-                            <div className="text-sm sm:text-base text-blue-100">Support Available</div>
-                        </div>
-                        <div className="text-white">
-                            <div className="text-3xl sm:text-4xl font-black mb-2">15+</div>
+                            <div className="text-3xl sm:text-4xl font-black mb-2">4+</div>
                             <div className="text-sm sm:text-base text-blue-100">Years Experience</div>
                         </div>
                     </div>

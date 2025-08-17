@@ -2,23 +2,7 @@ export default function About() {
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
             {/* Header */}
-            <section className="relative py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 overflow-hidden">
-                {/* Background Pattern */}
-                <div className="absolute inset-0 opacity-10">
-                    <div className="absolute inset-0" style={{
-                        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3Cpath d='M30 10 L30 50 M10 30 L50 30' stroke='%23ffffff' stroke-width='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-                    }} />
-                </div>
-
-                <div className="relative z-10 text-center">
-                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 sm:mb-6">
-                        About PowerTech
-                    </h1>
-                    <p className="text-lg sm:text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto leading-relaxed px-4">
-                        Your trusted partner for comprehensive electrical solutions
-                    </p>
-                </div>
-            </section>
+           
 
             {/* Content */}
             <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 -mt-8 sm:-mt-12 md:-mt-16 relative z-20">
@@ -29,7 +13,7 @@ export default function About() {
                                 <span className="text-3xl sm:text-4xl">⚡</span>
                             </div>
                             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                                Leading Electrical Solutions Provider
+                               Electrical Solutions Provider
                             </h2>
                             <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto">
                                 PowerTech Electrical has been at the forefront of electrical engineering excellence for over 15 years,

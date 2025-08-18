@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import jsPDF from 'jspdf'
@@ -9,161 +10,160 @@ export default function ProjectDetails() {
   const [isGeneratingPDF, setIsGeneratingPDF] = useState(false)
   const [loading, setLoading] = useState(true)
 
-  // Updated gallery images structure to match your Gallery component
-  // Updated Gallery Data Structure with Unique IDs
-const galleryImagesBySite = {
-  1: [ // Site 1 - Industrial Complex (MNO Engineering Works)
-    {
-      id: 6,  // Unique ID for Site 1 MCC Panel
-      title: 'MCC Panel',
-      category: 'LT Panels',
-      description: 'Motor Control Center panel for MNO Engineering Works',
-      imageUrl: '/placeholder-mcc.jpg',
-      isPlaceholder: true,
-      fullDescription: 'Motor Control Center panel installation for MNO Engineering Works, Chennai. Includes motor starters, overload protection, and control systems for multiple motors in the industrial facility.',
-      location: 'MNO Engineering Works, Chennai, Tamil Nadu',
-      completionDate: 'October 2023',
-      duration: '3 weeks',
-      teamSize: '4 engineers',
-      challenges: 'Multiple motor coordination, control system integration in existing industrial setup',
-      solutions: 'Modular MCC design, advanced control logic implementation, seamless integration with existing systems',
-      additionalPhotos: [
-        { id: 1, title: 'MCC Layout Design', description: 'Motor control center design and planning phase' },
-        { id: 2, title: 'Motor Starters Installation', description: 'Individual motor control units installation' },
-        { id: 3, title: 'Control System Integration', description: 'Central control system integration and testing' },
-        { id: 4, title: 'Final Commissioning', description: 'Complete system testing and handover' }
-      ]
-    },
-    {
-      id: 8,  // Unique ID for Site 1 Emergency Repair
-      title: 'Emergency Repair',
-      category: 'Maintenance',
-      description: 'Emergency switchgear repair services',
-      imageUrl: '/placeholder-repair.jpg',
-      isPlaceholder: true,
-      fullDescription: 'Emergency repair of critical switchgear failure at MNO Engineering Works industrial complex. 24/7 emergency response with minimal production downtime to ensure business continuity.',
-      location: 'MNO Engineering Works, Chennai, Tamil Nadu',
-      completionDate: 'August 2023',
-      duration: '3 days',
-      teamSize: '2 engineers',
-      challenges: 'Critical system failure during peak production, urgent timeline, parts availability',
-      solutions: 'Emergency parts procurement from Chennai suppliers, round-the-clock repair work, temporary bypass systems',
-      additionalPhotos: [
-        { id: 1, title: 'Fault Analysis', description: 'Comprehensive switchgear failure investigation' },
-        { id: 2, title: 'Emergency Repair Work', description: '24/7 emergency repair operations' },
-        { id: 3, title: 'System Testing', description: 'Post-repair verification and load testing' },
-        { id: 4, title: 'Documentation', description: 'Complete repair documentation and handover' }
-      ]
-    },
-    {
-      id: 9,  // Unique ID for Site 1 Panel Design
-      title: 'Panel Design',
-      category: 'Design',
-      description: 'Custom panel design and layout for industrial facility',
-      imageUrl: '/placeholder-design.jpg',
-      isPlaceholder: true,
-      fullDescription: 'Custom electrical panel design for MNO Engineering Works industrial complex. Advanced design including 3D modeling, thermal analysis, and compliance verification according to Indian standards.',
-      location: 'MNO Engineering Works, Chennai, Tamil Nadu',
-      completionDate: 'July 2023',
-      duration: '4 weeks',
-      teamSize: '2 engineers',
-      challenges: 'Complex industrial design requirements, Tamil Nadu electricity board compliance, space constraints',
-      solutions: '3D modeling software utilization, thermal analysis tools, modular design approach for easy maintenance',
-      additionalPhotos: [
-        { id: 1, title: '3D Panel Design', description: 'Advanced 3D modeling and visualization' },
-        { id: 2, title: 'Thermal Analysis', description: 'Heat dissipation study and cooling system design' },
-        { id: 3, title: 'Layout Planning', description: 'Optimal component arrangement and accessibility' },
-        { id: 4, title: 'Compliance Verification', description: 'Standards compliance and safety verification' }
-      ]
-    }
-  ],
-  2: [ // Site 2 - Commercial Plaza
-    {
-      id: 106,  // CHANGED: Unique ID for Site 2 MCC Panel (was 6, now 106)
-      title: 'MCC Panel',
-      category: 'LT Panels',
-      description: 'Motor Control Center panel for ABC Commercial Plaza',
-      imageUrl: '/placeholder-mcc.jpg',
-      isPlaceholder: true,
-      fullDescription: 'Motor Control Center panel installation for ABC Commercial Plaza, Mumbai. Commercial-grade motor control systems with enhanced safety features and monitoring capabilities for the commercial complex.',
-      location: 'ABC Commercial Plaza, Mumbai, Maharashtra', // CHANGED: Different location
-      completionDate: 'December 2023', // CHANGED: Different date
-      duration: '4 weeks', // CHANGED: Different duration
-      teamSize: '5 engineers', // CHANGED: Different team size
-      challenges: 'Commercial building regulations compliance, integration with building management system, 24/7 operational requirements',
-      solutions: 'gdg',
-      additionalPhotos: [
-        { id: 1, title: 'Commercial MCC Design', description: 'Commercial-grade motor control center design' },
-        { id: 2, title: 'BMS Integration', description: 'Building management system integration' },
-        { id: 3, title: 'Safety Systems', description: 'Enhanced safety and monitoring systems' },
-        { id: 4, title: 'Final Testing', description: 'Comprehensive testing and commissioning' }
-      ]
-    },
-    {
-      id: 108,  // CHANGED: Unique ID for Site 2 Emergency Repair (was 8, now 108)
-      title: 'Emergency Repair',
-      category: 'Maintenance',
-      description: 'Emergency electrical system repair services',
-      imageUrl: '/placeholder-repair.jpg',
-      isPlaceholder: true,
-      fullDescription: 'Emergency repair services for ABC Commercial Plaza electrical systems. Quick response team deployment to minimize business disruption and ensure continuous operations.',
-      location: 'ABC Commercial Plaza, Mumbai, Maharashtra',
-      completionDate: 'November 2023',
-      duration: '2 days',
-      teamSize: '3 engineers',
-      challenges: 'Minimal business disruption, working in occupied commercial space, coordination with multiple tenants',
-      solutions: 'Phased repair approach, temporary power arrangements, 24/7 coordination with building management',
-      additionalPhotos: [
-        { id: 1, title: 'System Diagnosis', description: 'Rapid fault identification and analysis' },
-        { id: 2, title: 'Repair Execution', description: 'Efficient repair with minimal disruption' },
-        { id: 3, title: 'System Restoration', description: 'Full system restoration and testing' },
-        { id: 4, title: 'Documentation', description: 'Complete repair documentation and preventive recommendations' }
-      ]
-    },
-    {
-      id: 109,  // CHANGED: Unique ID for Site 2 Panel Design (was 9, now 109)
-      title: 'Panel Design',
-      category: 'Design',
-      description: 'Custom commercial electrical panel design',
-      imageUrl: '/placeholder-design.jpg',
-      isPlaceholder: true,
-      fullDescription: 'Custom electrical panel design for ABC Commercial Plaza. Modern commercial-grade design with focus on energy efficiency, monitoring capabilities, and compliance with commercial building standards.',
-      location: 'ABC Commercial Plaza, Mumbai, Maharashtra',
-      completionDate: 'September 2023',
-      duration: '5 weeks',
-      teamSize: '3 engineers',
-      challenges: 'Commercial building codes compliance, energy efficiency requirements, integration with existing infrastructure',
-      solutions: 'Energy-efficient design, smart monitoring systems, phased implementation approach',
-      additionalPhotos: [
-        { id: 1, title: 'Commercial Panel Design', description: 'Energy-efficient commercial panel design' },
-        { id: 2, title: 'Smart Systems', description: 'Smart monitoring and control systems' },
-        { id: 3, title: 'Energy Analysis', description: 'Energy efficiency optimization' },
-        { id: 4, title: 'Code Compliance', description: 'Commercial building standards compliance verification' }
-      ]
-    },
-    {
-      id: 110,  // NEW: Additional project for Site 2
-      title: 'HT Switchgear',
-      category: 'HT Panels',
-      description: 'High Tension switchgear installation',
-      imageUrl: '/placeholder-ht.jpg',
-      isPlaceholder: true,
-      fullDescription: 'High Tension switchgear installation for ABC Commercial Plaza, Mumbai. Complete electrical distribution system for multi-story commercial complex with enhanced safety and monitoring features.',
-      location: 'ABC Commercial Plaza, Mumbai, Maharashtra',
-      completionDate: 'January 2024',
-      duration: '6 weeks',
-      teamSize: '6 engineers',
-      challenges: 'High voltage safety protocols, complex installation in occupied building, coordination with utility providers',
-      solutions: 'Phased installation approach, advanced safety measures, minimal disruption scheduling, utility coordination',
-      additionalPhotos: [
-        { id: 1, title: 'HT Panel Installation', description: 'High tension switchgear setup and installation' },
-        { id: 2, title: 'Safety Protocols', description: 'Advanced safety measures and testing procedures' },
-        { id: 3, title: 'System Integration', description: 'Integration with existing electrical infrastructure' },
-        { id: 4, title: 'Final Commissioning', description: 'Comprehensive system testing and commissioning' }
-      ]
-    }
-  ]
-};
+  // Fixed Gallery Data Structure with Unique IDs - matching the Gallery component
+  const galleryImagesBySite = {
+    1: [ // Site 1 - Industrial Complex (MNO Engineering Works)
+      {
+        id: 6,
+        title: 'MCC Panel',
+        category: 'LT Panels',
+        description: 'Motor Control Center panel for MNO Engineering Works',
+        imageUrl: '/placeholder-mcc.jpg',
+        isPlaceholder: true,
+        fullDescription: 'Motor Control Center panel installation for MNO Engineering Works, Chennai. Includes motor starters, overload protection, and control systems for multiple motors in the industrial facility.',
+        location: 'MNO Engineering Works, Chennai, Tamil Nadu',
+        completionDate: 'October 2023',
+        duration: '3 weeks',
+        teamSize: '4 engineers',
+        challenges: 'Multiple motor coordination, control system integration in existing industrial setup',
+        solutions: 'Modular MCC design, advanced control logic implementation, seamless integration with existing systems',
+        additionalPhotos: [
+          { id: 1, title: 'MCC Layout Design', description: 'Motor control center design and planning phase' },
+          { id: 2, title: 'Motor Starters Installation', description: 'Individual motor control units installation' },
+          { id: 3, title: 'Control System Integration', description: 'Central control system integration and testing' },
+          { id: 4, title: 'Final Commissioning', description: 'Complete system testing and handover' }
+        ]
+      },
+      {
+        id: 8,
+        title: 'Emergency Repair',
+        category: 'Maintenance',
+        description: 'Emergency switchgear repair services',
+        imageUrl: '/placeholder-repair.jpg',
+        isPlaceholder: true,
+        fullDescription: 'Emergency repair of critical switchgear failure at MNO Engineering Works industrial complex. 24/7 emergency response with minimal production downtime to ensure business continuity.',
+        location: 'MNO Engineering Works, Chennai, Tamil Nadu',
+        completionDate: 'August 2023',
+        duration: '3 days',
+        teamSize: '2 engineers',
+        challenges: 'Critical system failure during peak production, urgent timeline, parts availability',
+        solutions: 'Emergency parts procurement from Chennai suppliers, round-the-clock repair work, temporary bypass systems',
+        additionalPhotos: [
+          { id: 1, title: 'Fault Analysis', description: 'Comprehensive switchgear failure investigation' },
+          { id: 2, title: 'Emergency Repair Work', description: '24/7 emergency repair operations' },
+          { id: 3, title: 'System Testing', description: 'Post-repair verification and load testing' },
+          { id: 4, title: 'Documentation', description: 'Complete repair documentation and handover' }
+        ]
+      },
+      {
+        id: 9,
+        title: 'Panel Design',
+        category: 'Design',
+        description: 'Custom panel design and layout for industrial facility',
+        imageUrl: '/placeholder-design.jpg',
+        isPlaceholder: true,
+        fullDescription: 'Custom electrical panel design for MNO Engineering Works industrial complex. Advanced design including 3D modeling, thermal analysis, and compliance verification according to Indian standards.',
+        location: 'MNO Engineering Works, Chennai, Tamil Nadu',
+        completionDate: 'July 2023',
+        duration: '4 weeks',
+        teamSize: '2 engineers',
+        challenges: 'Complex industrial design requirements, Tamil Nadu electricity board compliance, space constraints',
+        solutions: '3D modeling software utilization, thermal analysis tools, modular design approach for easy maintenance',
+        additionalPhotos: [
+          { id: 1, title: '3D Panel Design', description: 'Advanced 3D modeling and visualization' },
+          { id: 2, title: 'Thermal Analysis', description: 'Heat dissipation study and cooling system design' },
+          { id: 3, title: 'Layout Planning', description: 'Optimal component arrangement and accessibility' },
+          { id: 4, title: 'Compliance Verification', description: 'Standards compliance and safety verification' }
+        ]
+      }
+    ],
+    2: [ // Site 2 - Commercial Plaza (ABC Commercial Ltd) - FIXED with unique IDs and correct details
+      {
+        id: 206, // Unique ID for Site 2 MCC Panel
+        title: 'HT Panel',
+        category: 'HT Panels',
+        description: 'High Tension panel for ABC Commercial Plaza',
+        imageUrl: '/placeholder-ht.jpg',
+        isPlaceholder: true,
+        fullDescription: 'High Tension panel installation for ABC Commercial Plaza, Mumbai. Commercial-grade HT distribution systems with enhanced safety features and monitoring capabilities for the commercial complex.',
+        location: 'ABC Commercial Plaza, Mumbai, Maharashtra',
+        completionDate: 'December 2024',
+        duration: '5 weeks',
+        teamSize: '6 engineers',
+        challenges: 'anagemeety in occupied building',
+        solutions: 'Smart building integration, automated monitoring systems, redundant safety mechanisms, compliance with Maharashtra state electrical codes',
+        additionalPhotos: [
+          { id: 1, title: 'HT Panel Design', description: 'High tension panel design and planning' },
+          { id: 2, title: 'BMS Integration', description: 'Building management system integration' },
+          { id: 3, title: 'Safety Systems', description: 'Enhanced safety and monitoring systems' },
+          { id: 4, title: 'Final Testing', description: 'Comprehensive testing and commissioning' }
+        ]
+      },
+      {
+        id: 208, // Unique ID for Site 2 APFC System
+        title: 'APFC System',
+        category: 'Power Factor',
+        description: 'Automatic Power Factor Correction system',
+        imageUrl: '/placeholder-apfc.jpg',
+        isPlaceholder: true,
+        fullDescription: 'Automorrection system installation for ABC Commercial Plaza. Advanced APFC panel with real-time monitoring and automatic capacitor switching for optimal power factor maintenance.',
+        location: 'ABC Commercial Plaza, Mumbai, Maharashtra',
+        completionDate: 'November 2024',
+        duration: '3 weeks',
+        teamSize: '4 engineers',
+        challenges: 'Power factor optimization for commercial loads, real-time monitoring requirements, integration with existing electrical infrastructure',
+        solutions: 'Advanced APFC controller installation, real-time power monitoring, automatic capacitor bank switching, Mumbai utility compliance',
+        additionalPhotos: [
+          { id: 1, title: 'APFC Panel Installation', description: 'Automatic power factor correction panel setup' },
+          { id: 2, title: 'Capacitor Bank Setup', description: 'Capacitor bank installation and wiring' },
+          { id: 3, title: 'Controller Programming', description: 'APFC controller configuration and testing' },
+          { id: 4, title: 'System Commissioning', description: 'Complete system testing and handover' }
+        ]
+      },
+      {
+        id: 209, // Unique ID for Site 2 Transformer Setup
+        title: 'Transformer Setup',
+        category: 'Transformers',
+        description: 'Distribution transformer installation and setup',
+        imageUrl: '/placeholder-transformer.jpg',
+        isPlaceholder: true,
+        fullDescription: 'Distribution transformer installation for ABC Commercial Plaza. Complete transformer setup including foundation work, electrical connections, and protection systems for commercial power distribution.',
+        location: 'ABC Commercial Plaza, Mumbai, Maharashtra',
+        completionDate: 'October 2024',
+        duration: '4 weeks',
+        teamSize: '5 engineers',
+        challenges: 'Transformer positioning in commercial area, utility coordination, protection system integration',
+        solutions: 'Crane installation method, utility coordination with MSEB, advanced protection relay systems, oil testing and commissioning',
+        additionalPhotos: [
+          { id: 1, title: 'Transformer Installation', description: 'Distribution transformer positioning and setup' },
+          { id: 2, title: 'Protection Systems', description: 'Relay protection and monitoring systems' },
+          { id: 3, title: 'Oil Testing', description: 'Transformer oil testing and analysis' },
+          { id: 4, title: 'Final Commissioning', description: 'Complete transformer commissioning and testing' }
+        ]
+      },
+      {
+        id: 210, // Additional project for Site 2
+        title: 'Load Testing',
+        category: 'Testing',
+        description: 'Comprehensive electrical load testing',
+        imageUrl: '/placeholder-testing.jpg',
+        isPlaceholder: true,
+        fullDescription: 'Comprehensive electrical load testing for ABC Commercial Plaza, Mumbai. Complete electrical system validation including load analysis, capacity testing, and performance verification.',
+        location: 'ABC Commercial Plaza, Mumbai, Maharashtra',
+        completionDate: 'January 2024',
+        duration: '2 weeks',
+        teamSize: '3 engineers',
+        challenges: 'Load tational commercial building, tenant coordination, comprehensive system validation',
+        solutions: 'Phased testing approach, tenant notification systems, advanced testing equipment, minimal disruption scheduling',
+        additionalPhotos: [
+          { id: 1, title: 'Load Analysis', description: 'Comprehensive electrical load analysis' },
+          { id: 2, title: 'Capacity Testing', description: 'System capacity and performance testing' },
+          { id: 3, title: 'Performance Validation', description: 'Complete system performance verification' },
+          { id: 4, title: 'Documentation', description: 'Load testing report and recommendations' }
+        ]
+      }
+    ]
+  };
 
   useEffect(() => {
     // Search through all sites to find the project
@@ -253,7 +253,7 @@ const galleryImagesBySite = {
           <h3 style="color: #1e40af; font-size: 18px; margin-bottom: 15px;">TECHNICAL SPECIFICATIONS</h3>
           <div style="background: #f8fafc; padding: 20px; border-radius: 8px; font-size: 14px;">
             <div style="margin-bottom: 8px;"><strong>Project Category:</strong> ${project.category}</div>
-            <div style="margin-bottom: 8px;"><strong>Project Complexity:</strong> ${project.teamSize.includes('5') ? 'High' : project.teamSize.includes('4') ? 'Medium-High' : project.teamSize.includes('3') ? 'Medium' : 'Standard'}</div>
+            <div style="margin-bottom: 8px;"><strong>Project Complexity:</strong> ${project.teamSize.includes('5') || project.teamSize.includes('6') ? 'High' : project.teamSize.includes('4') ? 'Medium-High' : project.teamSize.includes('3') ? 'Medium' : 'Standard'}</div>
             <div style="margin-bottom: 8px;"><strong>Quality Standards:</strong> ISO 9001:2015 Compliant</div>
             <div style="margin-bottom: 8px;"><strong>Safety Standards:</strong> IEC 61439, IEC 62271</div>
           </div>

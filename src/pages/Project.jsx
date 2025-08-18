@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 export default function Project() {
-  // Site data - each site contains multiple projects
+  // Site data - each site contains multiple projects (FIXED with correct project names)
   const projectSites = [
     {
       siteId: 1,
@@ -31,7 +31,7 @@ export default function Project() {
       clientName: "ABC Commercial Ltd",
       projectValue: "₹45 Lakhs",
       keyFeatures: ["HT Panel Installation", "APFC Systems", "Load Testing"],
-      projects: ["HT Panel", "APFC System", "Transformer Setup"]
+      projects: ["HT Panel", "APFC System", "Transformer Setup", "Load Testing"]
     },
   ];
 

@@ -1,9 +1,7 @@
-
 import { useState, useEffect } from 'react'
 
 export default function Gallery() {
-  // All gallery images organized by site (Updated with Industrial Complex data)
-  
+  // Fixed Gallery Data Structure with Unique IDs
   const galleryImagesBySite = {
     1: [ // Site 1 - Industrial Complex (MNO Engineering Works)
       {
@@ -70,71 +68,92 @@ export default function Gallery() {
         ]
       }
     ],
-    2: [ // Site 2 - Industrial Complex (MNO Engineering Works)
+    2: [ // Site 2 - Commercial Plaza (ABC Commercial Ltd) - FIXED with unique IDs matching projects list
       {
-        id: 6,
-        title: 'MCC Panel',
-        category: 'LT Panels',
-        description: 'Motor Control Center panel for MNO Engineering Works',
-        imageUrl: '/placeholder-mcc.jpg',
+        id: 206, // Unique ID for Site 2 HT Panel
+        title: 'HT Panel',
+        category: 'HT Panels',
+        description: 'High Tension panel for ABC Commercial Plaza',
+        imageUrl: '/placeholder-ht.jpg',
         isPlaceholder: true,
-        fullDescription: 'Motor Control Center panel installation for MNO Engineering Works, Chennai. Includes motor starters, overload protection, and control systems for multiple motors in the industrial facility.',
-        location: 'MNO Engineering Works, Chennai, Tamil Nadu',
-        completionDate: 'October 2023',
+        fullDescription: 'High Tension panel installation for ABC Commercial Plaza, Mumbai. Commercial-grade HT distribution systems with enhanced safety features and monitoring capabilities for the commercial complex.',
+        location: 'ABC Commercial Plaza, Mumbai, Maharashtra',
+        completionDate: 'December 2024',
+        duration: '5 weeks',
+        teamSize: '6 engineers',
+        challenges: 'Commercial building regulations compliance, integration with building management system, high voltage safety in occupied building',
+        solutions: 'Smart building integration, automated monitoring systems, redundant safety mechanisms, compliance with Maharashtra state electrical codes',
+        additionalPhotos: [
+          { id: 1, title: 'HT Panel Design', description: 'High tension panel design and planning' },
+          { id: 2, title: 'BMS Integration', description: 'Building management system integration' },
+          { id: 3, title: 'Safety Systems', description: 'Enhanced safety and monitoring systems' },
+          { id: 4, title: 'Final Testing', description: 'Comprehensive testing and commissioning' }
+        ]
+      },
+      {
+        id: 208, // Unique ID for Site 2 APFC System
+        title: 'APFC System',
+        category: 'Power Factor',
+        description: 'Automatic Power Factor Correction system',
+        imageUrl: '/placeholder-apfc.jpg',
+        isPlaceholder: true,
+        fullDescription: 'Automatic Power Factor Correction system installation for ABC Commercial Plaza. Advanced APFC panel with real-time monitoring and automatic capacitor switching for optimal power factor maintenance.',
+        location: 'ABC Commercial Plaza, Mumbai, Maharashtra',
+        completionDate: 'November 2024',
         duration: '3 weeks',
         teamSize: '4 engineers',
-        challenges: 'Multiple motor coordination, control system integration in existing industrial setup',
-        solutions: 'Modular MCC design, advanced control logic implementation, seamless integration with existing systems',
+        challenges: 'Power factor optimization for commercial loads, real-time monitoring requirements, integration with existing electrical infrastructure',
+        solutions: 'Advanced APFC controller installation, real-time power monitoring, automatic capacitor bank switching, Mumbai utility compliance',
         additionalPhotos: [
-          { id: 1, title: 'MCC Layout Design', description: 'Motor control center design and planning phase' },
-          { id: 2, title: 'Motor Starters Installation', description: 'Individual motor control units installation' },
-          { id: 3, title: 'Control System Integration', description: 'Central control system integration and testing' },
-          { id: 4, title: 'Final Commissioning', description: 'Complete system testing and handover' }
+          { id: 1, title: 'APFC Panel Installation', description: 'Automatic power factor correction panel setup' },
+          { id: 2, title: 'Capacitor Bank Setup', description: 'Capacitor bank installation and wiring' },
+          { id: 3, title: 'Controller Programming', description: 'APFC controller configuration and testing' },
+          { id: 4, title: 'System Commissioning', description: 'Complete system testing and handover' }
         ]
       },
       {
-        id: 8,
-        title: 'Emergency Repair',
-        category: 'Maintenance',
-        description: 'Emergency switchgear repair services',
-        imageUrl: '/placeholder-repair.jpg',
+        id: 209, // Unique ID for Site 2 Transformer Setup
+        title: 'Transformer Setup',
+        category: 'Transformers',
+        description: 'Distribution transformer installation and setup',
+        imageUrl: '/placeholder-transformer.jpg',
         isPlaceholder: true,
-        fullDescription: 'Emergency repair of critical switchgear failure at MNO Engineering Works industrial complex. 24/7 emergency response with minimal production downtime to ensure business continuity.',
-        location: 'MNO Engineering Works, Chennai, Tamil Nadu',
-        completionDate: 'August 2023',
-        duration: '3 days',
-        teamSize: '2 engineers',
-        challenges: 'Critical system failure during peak production, urgent timeline, parts availability',
-        solutions: 'Emergency parts procurement from Chennai suppliers, round-the-clock repair work, temporary bypass systems',
-        additionalPhotos: [
-          { id: 1, title: 'Fault Analysis', description: 'Comprehensive switchgear failure investigation' },
-          { id: 2, title: 'Emergency Repair Work', description: '24/7 emergency repair operations' },
-          { id: 3, title: 'System Testing', description: 'Post-repair verification and load testing' },
-          { id: 4, title: 'Documentation', description: 'Complete repair documentation and handover' }
-        ]
-      },
-      {
-        id: 9,
-        title: 'Panel Design',
-        category: 'Design',
-        description: 'Custom panel design and layout for industrial facility',
-        imageUrl: '/placeholder-design.jpg',
-        isPlaceholder: true,
-        fullDescription: 'Custom electrical panel design for MNO Engineering Works industrial complex. Advanced design including 3D modeling, thermal analysis, and compliance verification according to Indian standards.',
-        location: 'MNO Engineering Works, Chennai, Tamil Nadu',
-        completionDate: 'July 2023',
+        fullDescription: 'Distribution transformer installation for ABC Commercial Plaza. Complete transformer setup including foundation work, electrical connections, and protection systems for commercial power distribution.',
+        location: 'ABC Commercial Plaza, Mumbai, Maharashtra',
+        completionDate: 'October 2024',
         duration: '4 weeks',
-        teamSize: '2 engineers',
-        challenges: 'Complex industrial design requirements, Tamil Nadu electricity board compliance, space constraints',
-        solutions: '3D modeling software utilization, thermal analysis tools, modular design approach for easy maintenance',
+        teamSize: '5 engineers',
+        challenges: 'Transformer positioning in commercial area, utility coordination, protection system integration',
+        solutions: 'Crane installation method, utility coordination with MSEB, advanced protection relay systems, oil testing and commissioning',
         additionalPhotos: [
-          { id: 1, title: '3D Panel Design', description: 'Advanced 3D modeling and visualization' },
-          { id: 2, title: 'Thermal Analysis', description: 'Heat dissipation study and cooling system design' },
-          { id: 3, title: 'Layout Planning', description: 'Optimal component arrangement and accessibility' },
-          { id: 4, title: 'Compliance Verification', description: 'Standards compliance and safety verification' }
+          { id: 1, title: 'Transformer Installation', description: 'Distribution transformer positioning and setup' },
+          { id: 2, title: 'Protection Systems', description: 'Relay protection and monitoring systems' },
+          { id: 3, title: 'Oil Testing', description: 'Transformer oil testing and analysis' },
+          { id: 4, title: 'Final Commissioning', description: 'Complete transformer commissioning and testing' }
+        ]
+      },
+      {
+        id: 210, // Additional project for Site 2
+        title: 'Load Testing',
+        category: 'Testing',
+        description: 'Comprehensive electrical load testing',
+        imageUrl: '/placeholder-testing.jpg',
+        isPlaceholder: true,
+        fullDescription: 'Comprehensive electrical load testing for ABC Commercial Plaza, Mumbai. Complete electrical system validation including load analysis, capacity testing, and performance verification.',
+        location: 'ABC Commercial Plaza, Mumbai, Maharashtra',
+        completionDate: 'January 2024',
+        duration: '2 weeks',
+        teamSize: '3 engineers',
+        challenges: 'Load testing in operational commercial building, tenant coordination, comprehensive system validation',
+        solutions: 'Phased testing approach, tenant notification systems, advanced testing equipment, minimal disruption scheduling',
+        additionalPhotos: [
+          { id: 1, title: 'Load Analysis', description: 'Comprehensive electrical load analysis' },
+          { id: 2, title: 'Capacity Testing', description: 'System capacity and performance testing' },
+          { id: 3, title: 'Performance Validation', description: 'Complete system performance verification' },
+          { id: 4, title: 'Documentation', description: 'Load testing report and recommendations' }
         ]
       }
-    ],
+    ]
   };
 
   const siteNames = {
@@ -219,7 +238,7 @@ export default function Gallery() {
   }, [urlParams, selectedCategory]);
 
   // Available categories
-  const categories = ['All', 'HT Panels', 'LT Panels', 'Transformers', 'Maintenance', 'Testing', 'Design', 'Planning'];
+  const categories = ['All', 'HT Panels', 'LT Panels', 'Transformers', 'Maintenance', 'Testing', 'Design', 'Planning', 'Power Factor'];
 
   // Helper functions
   const getCurrentSiteName = () => {
@@ -246,7 +265,6 @@ export default function Gallery() {
     return breadcrumb;
   };
 
-
   const navigateToProject = (projectId) => {
     // In a real app, you'd use router navigation
     window.location.href = `/project/${projectId}`;
@@ -254,7 +272,24 @@ export default function Gallery() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
-    
+      {/* Header */}
+      <section className="relative py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3Cpath d='M30 10 L30 50 M10 30 L50 30' stroke='%23ffffff' stroke-width='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+          }} />
+        </div>
+
+        <div className="relative z-10 text-center">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 sm:mb-6">
+            Project Gallery
+          </h1>
+          <p className="text-lg sm:text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto leading-relaxed px-4">
+            {getBreadcrumb()}
+          </p>
+        </div>
+      </section>
 
       {/* Gallery Content */}
       <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 -mt-8 sm:-mt-12 md:-mt-16 relative z-20">
@@ -303,7 +338,10 @@ export default function Gallery() {
                     <div>
                       <h4 className="font-semibold text-gray-700 mb-2">Scope:</h4>
                       <p className="text-sm text-gray-600">
-                        Complete electrical infrastructure for industrial facility including MCC panel installation, emergency repair systems, and custom panel design solutions.
+                        {urlParams.site === 1 
+                          ? "Complete electrical infrastructure for industrial facility including MCC panel installation, emergency repair systems, and custom panel design solutions."
+                          : "Modern electrical systems for commercial complex including HT panel installation, APFC systems, transformer setup, and comprehensive load testing."
+                        }
                       </p>
                     </div>
                   </div>

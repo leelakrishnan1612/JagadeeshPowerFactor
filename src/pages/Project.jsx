@@ -1,47 +1,35 @@
-import { useState } from 'react'
+import React, { useState } from 'react';
+import {
+  filterSitesByCategory,
+  getPortfolioStats,
+  getUniqueCategories,
+  projectSitesData,
+  searchSites
+} from '../Data/ProjectData';
 
 export default function Project() {
-  // Site data - each site contains multiple projects (FIXED with correct project names)
-  const projectSites = [
-    {
-      siteId: 1,
-      siteName: "Industrial Complex",
-      location: "Chennai, Tamil Nadu",
-      completionYear: "2023",
-      totalProjects: 3,
-      category: "Industrial",
-      description: "Complete electrical infrastructure for industrial facility",
-      imageUrl: '/placeholder-industrial.jpg',
-      isPlaceholder: true,
-      clientName: "MNO Engineering Works",
-      projectValue: "₹25 Lakhs",
-      keyFeatures: ["MCC Panel Installation", "Emergency Repair Systems", "Custom Panel Design"],
-      projects: ["MCC Panel", "Emergency Repair", "Panel Design"]
-    },
-    {
-      siteId: 2,
-      siteName: "Commercial Plaza",
-      location: "Mumbai, Maharashtra", 
-      completionYear: "2024",
-      totalProjects: 4,
-      category: "Commercial",
-      description: "Modern electrical systems for commercial complex",
-      imageUrl: '/placeholder-commercial.jpg',
-      isPlaceholder: true,
-      clientName: "ABC Commercial Ltd",
-      projectValue: "₹45 Lakhs",
-      keyFeatures: ["HT Panel Installation", "APFC Systems", "Load Testing"],
-      projects: ["HT Panel", "APFC System", "Transformer Setup", "Load Testing"]
-    },
-  ];
-
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [searchTerm, setSearchTerm] = useState('');
   const sitesPerPage = 2;
 
+  // Get filtered data based on category and search
+  let filteredSites = projectSitesData;
+  if (selectedCategory !== 'All') {
+    filteredSites = filterSitesByCategory(selectedCategory);
+  }
+  if (searchTerm) {
+    filteredSites = searchSites(searchTerm);
+  }
+
   // Calculate pagination
-  const totalPages = Math.ceil(projectSites.length / sitesPerPage);
+  const totalPages = Math.ceil(filteredSites.length / sitesPerPage);
   const startIndex = (currentPage - 1) * sitesPerPage;
-  const currentSites = projectSites.slice(startIndex, startIndex + sitesPerPage);
+  const currentSites = filteredSites.slice(startIndex, startIndex + sitesPerPage);
+
+  // Get portfolio statistics
+  const portfolioStats = getPortfolioStats();
+  const categories = getUniqueCategories();
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -57,6 +45,16 @@ export default function Project() {
     if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
     }
+  };
+
+  const handleCategoryFilter = (category) => {
+    setSelectedCategory(category);
+    setCurrentPage(1); // Reset to first page when filtering
+  };
+
+  const handleSearch = (term) => {
+    setSearchTerm(term);
+    setCurrentPage(1); // Reset to first page when searching
   };
 
   // Function to navigate to gallery for specific site
@@ -87,152 +85,199 @@ export default function Project() {
         </div>
       </section>
 
-      {/* Sites Content */}
-      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 -mt-8 sm:-mt-12 md:-mt-16 relative z-20">
+      {/* Search and Filter Section */}
+      <section className="py-6 px-4 sm:px-6 -mt-8 sm:-mt-12 md:-mt-16 relative z-20">
         <div className="max-w-7xl mx-auto">
-          {/* Page Information */}
-          <div className="mb-8 sm:mb-12 bg-white rounded-2xl shadow-xl p-6 sm:p-8 border border-gray-100">
+          <div className="bg-white rounded-2xl shadow-xl p-6 border border-gray-100 mb-6">
+            {/* Search Bar */}
+            <div className="mb-6">
+              <input
+                type="text"
+                placeholder="Search sites by name, location, category, or client..."
+                value={searchTerm}
+                onChange={(e) => handleSearch(e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              />
+            </div>
+
+            {/* Category Filters */}
+            <div className="flex flex-wrap gap-2">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => handleCategoryFilter(category)}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                    selectedCategory === category
+                      ? 'bg-blue-600 text-white shadow-lg'
+                      : 'bg-gray-100 text-gray-700 hover:bg-blue-50 hover:text-blue-600'
+                  }`}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Sites Content */}
+      <section className="py-6 px-4 sm:px-6 relative z-20">
+        <div className="max-w-7xl mx-auto">
+          {/* Results Information */}
+          <div className="mb-8 bg-white rounded-2xl shadow-xl p-6 border border-gray-100">
             <div className="text-center">
               <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
-                Our Project Locations
+                {selectedCategory === 'All' ? 'All Project Sites' : `${selectedCategory} Projects`}
               </h2>
               <p className="text-lg text-gray-600 mb-4">
-                Delivering excellence across multiple sites and industries
+                {searchTerm ? `Search results for "${searchTerm}"` : 'Delivering excellence across multiple sites and industries'}
               </p>
               <div className="flex justify-center items-center gap-4 text-sm text-gray-500">
-                <span>Total Sites: {projectSites.length}</span>
-                <span>•</span>
-                <span>Page {currentPage} of {totalPages}</span>
+                <span>Showing {filteredSites.length} site{filteredSites.length !== 1 ? 's' : ''}</span>
+                {totalPages > 0 && (
+                  <>
+                    <span>•</span>
+                    <span>Page {currentPage} of {totalPages}</span>
+                  </>
+                )}
               </div>
             </div>
           </div>
 
           {/* Sites Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-12">
-            {currentSites.map((site) => (
-              <div
-                key={site.siteId}
-                className="group bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
-              >
-                {/* Site Image Container */}
-                <div className="relative aspect-[4/3] bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden">
-                  {site.isPlaceholder ? (
-                    <div className="w-full h-full flex items-center justify-center">
-                      <div className="text-center p-4">
-                        <div className="w-16 h-16 sm:w-20 sm:h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                          <span className="text-2xl sm:text-3xl">🏗️</span>
+          {filteredSites.length === 0 ? (
+            <div className="text-center py-12">
+              <div className="text-6xl text-gray-300 mb-4">🔍</div>
+              <h3 className="text-xl font-medium text-gray-600 mb-2">No sites found</h3>
+              <p className="text-gray-500">Try adjusting your search or filter criteria</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-12">
+              {currentSites.map((site) => (
+                <div
+                  key={site.siteId}
+                  className="group bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+                >
+                  {/* Site Image Container */}
+                  <div className="relative aspect-[4/3] bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden">
+                    {site.isPlaceholder ? (
+                      <div className="w-full h-full flex items-center justify-center">
+                        <div className="text-center p-4">
+                          <div className="w-16 h-16 sm:w-20 sm:h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <span className="text-2xl sm:text-3xl">🏗️</span>
+                          </div>
+                          <p className="text-xs sm:text-sm text-gray-500 font-medium">
+                            {site.siteName}
+                          </p>
+                          <p className="text-xs text-gray-400 mt-1">
+                            Site photos coming soon
+                          </p>
                         </div>
-                        <p className="text-xs sm:text-sm text-gray-500 font-medium">
-                          {site.siteName}
-                        </p>
-                        <p className="text-xs text-gray-400 mt-1">
-                          Site photos coming soon
-                        </p>
+                      </div>
+                    ) : (
+                      <img
+                        src={site.imageUrl}
+                        alt={site.siteName}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                    )}
+
+                    {/* Category Badge */}
+                    <div className="absolute top-3 left-3">
+                      <span className="px-2 py-1 bg-blue-600 text-white text-xs font-medium rounded-full">
+                        {site.category}
+                      </span>
+                    </div>
+
+                    {/* Projects Count Badge */}
+                    <div className="absolute top-3 right-3">
+                      <span className="px-2 py-1 bg-green-600 text-white text-xs font-medium rounded-full">
+                        {site.totalProjects} Projects
+                      </span>
+                    </div>
+
+                    {/* Hover Overlay */}
+                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
+                      <div className="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4">
+                        <h3 className="text-lg font-bold mb-2">{site.siteName}</h3>
+                        <p className="text-sm text-gray-200 mb-3">{site.description}</p>
+                        <div className="space-y-2 mb-4">
+                          <p className="text-xs text-gray-300">Key Projects:</p>
+                          {site.projects.slice(0, 3).map((project, index) => (
+                            <span key={index} className="inline-block bg-white/20 text-xs px-2 py-1 rounded-full mx-1">
+                              {project}
+                            </span>
+                          ))}
+                        </div>
+                        <button
+                          onClick={() => navigateToGallery(site.siteId)}
+                          className="px-4 py-2 bg-white text-gray-900 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors inline-block"
+                        >
+                          View All Projects
+                        </button>
                       </div>
                     </div>
-                  ) : (
-                    <img
-                      src={site.imageUrl}
-                      alt={site.siteName}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                  )}
-
-                  {/* Category Badge */}
-                  <div className="absolute top-3 left-3">
-                    <span className="px-2 py-1 bg-blue-600 text-white text-xs font-medium rounded-full">
-                      {site.category}
-                    </span>
                   </div>
 
-                  {/* Projects Count Badge */}
-                  <div className="absolute top-3 right-3">
-                    <span className="px-2 py-1 bg-green-600 text-white text-xs font-medium rounded-full">
-                      {site.totalProjects} Projects
-                    </span>
-                  </div>
+                  {/* Site Info */}
+                  <div className="p-4">
+                    <h3 className="font-bold text-gray-900 text-base sm:text-lg mb-1">
+                      Site {site.siteId}: {site.siteName}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-gray-600 mb-2 flex items-center">
+                      <span className="mr-1">📍</span>
+                      {site.location}
+                    </p>
+                    <p className="text-xs sm:text-sm text-gray-600 mb-3">
+                      {site.description}
+                    </p>
 
-                  {/* Hover Overlay */}
-                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
-                    <div className="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4">
-                      <h3 className="text-lg font-bold mb-2">{site.siteName}</h3>
-                      <p className="text-sm text-gray-200 mb-3">{site.description}</p>
-                      <div className="space-y-2 mb-4">
-                        <p className="text-xs text-gray-300">Key Projects:</p>
-                        {site.projects.slice(0, 3).map((project, index) => (
-                          <span key={index} className="inline-block bg-white/20 text-xs px-2 py-1 rounded-full mx-1">
-                            {project}
-                          </span>
-                        ))}
+                    <div className="space-y-2 mb-4">
+                      <div className="flex justify-between items-center text-xs">
+                        <span className="text-gray-500">Client:</span>
+                        <span className="font-medium text-gray-700">{site.clientName}</span>
                       </div>
-                      <button
-                        onClick={() => navigateToGallery(site.siteId)}
-                        className="px-4 py-2 bg-white text-gray-900 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors inline-block"
-                      >
-                        View All Projects
-                      </button>
+                      <div className="flex justify-between items-center text-xs">
+                        <span className="text-gray-500">Value:</span>
+                        <span className="font-medium text-green-600">{site.projectValue}</span>
+                      </div>
+                      <div className="flex justify-between items-center text-xs">
+                        <span className="text-gray-500">Year:</span>
+                        <span className="font-medium text-gray-700">{site.completionYear}</span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs text-blue-600 font-medium">
+                        {site.totalProjects} Projects
+                      </span>
+                      <span className="text-xs text-gray-400">
+                        Site #{site.siteId}
+                      </span>
                     </div>
                   </div>
                 </div>
+              ))}
 
-                {/* Site Info */}
-                <div className="p-4">
-                  <h3 className="font-bold text-gray-900 text-base sm:text-lg mb-1">
-                    Site {site.siteId}: {site.siteName}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-gray-600 mb-2 flex items-center">
-                    <span className="mr-1">📍</span>
-                    {site.location}
-                  </p>
-                  <p className="text-xs sm:text-sm text-gray-600 mb-3">
-                    {site.description}
-                  </p>
-
-                  <div className="space-y-2 mb-4">
-                    <div className="flex justify-between items-center text-xs">
-                      <span className="text-gray-500">Client:</span>
-                      <span className="font-medium text-gray-700">{site.clientName}</span>
-                    </div>
-                    <div className="flex justify-between items-center text-xs">
-                      <span className="text-gray-500">Value:</span>
-                      <span className="font-medium text-green-600">{site.projectValue}</span>
-                    </div>
-                    <div className="flex justify-between items-center text-xs">
-                      <span className="text-gray-500">Year:</span>
-                      <span className="font-medium text-gray-700">{site.completionYear}</span>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs text-blue-600 font-medium">
-                      {site.totalProjects} Projects
-                    </span>
-                    <span className="text-xs text-gray-400">
-                      Site #{site.siteId}
-                    </span>
+              {/* Fill empty slots if less than sitesPerPage sites on current page */}
+              {Array.from({ length: Math.max(0, sitesPerPage - currentSites.length) }).map((_, index) => (
+                <div
+                  key={`empty-${index}`}
+                  className="bg-gray-100 rounded-xl sm:rounded-2xl aspect-[4/3] flex items-center justify-center border-2 border-dashed border-gray-300"
+                >
+                  <div className="text-center p-4">
+                    <div className="text-4xl text-gray-400 mb-2">➕</div>
+                    <p className="text-sm text-gray-500 font-medium">
+                      New Site
+                    </p>
+                    <p className="text-xs text-gray-400">
+                      Coming Soon
+                    </p>
                   </div>
                 </div>
-              </div>
-            ))}
-
-            {/* Fill empty slots if less than 4 sites on current page */}
-            {Array.from({ length: Math.max(0, sitesPerPage - currentSites.length) }).map((_, index) => (
-              <div
-                key={`empty-${index}`}
-                className="bg-gray-100 rounded-xl sm:rounded-2xl aspect-[4/3] flex items-center justify-center border-2 border-dashed border-gray-300"
-              >
-                <div className="text-center p-4">
-                  <div className="text-4xl text-gray-400 mb-2">➕</div>
-                  <p className="text-sm text-gray-500 font-medium">
-                    New Site
-                  </p>
-                  <p className="text-xs text-gray-400">
-                    Coming Soon
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
 
           {/* Pagination Controls */}
           {totalPages > 1 && (
@@ -290,25 +335,25 @@ export default function Project() {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8">
               <div className="text-center">
                 <div className="text-2xl sm:text-3xl font-bold text-blue-600 mb-2">
-                  {projectSites.length}
+                  {portfolioStats.totalSites}
                 </div>
                 <div className="text-sm sm:text-base text-gray-600">Total Sites</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl sm:text-3xl font-bold text-green-600 mb-2">
-                  {projectSites.reduce((total, site) => total + site.totalProjects, 0)}+
+                  {portfolioStats.totalProjects}+
                 </div>
                 <div className="text-sm sm:text-base text-gray-600">Total Projects</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl sm:text-3xl font-bold text-purple-600 mb-2">
-                  15+
+                  {portfolioStats.yearsExperience}+
                 </div>
                 <div className="text-sm sm:text-base text-gray-600">Years Experience</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl sm:text-3xl font-bold text-orange-600 mb-2">
-                  100%
+                  {portfolioStats.successRate}%
                 </div>
                 <div className="text-sm sm:text-base text-gray-600">Success Rate</div>
               </div>
@@ -317,5 +362,5 @@ export default function Project() {
         </div>
       </section>
     </div>
-  )
+  );
 }

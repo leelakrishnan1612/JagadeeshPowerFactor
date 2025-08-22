@@ -25,11 +25,11 @@ export const GalleryData = {
       },
       {
         id: 8,
-        title: 'Emergency Repair',
+        title: 'Site Maintenance',
         category: 'Maintenance',
         description: 'Emergency switchgear repair services',
         imageUrl: '/placeholder-repair.jpg',
-        isPlaceholder: true,
+        isPlaceholder: false,
         fullDescription: 'Emergency repair of critical switchgear failure at MNO Engineering Works industrial complex. 24/7 emergency response with minimal production downtime to ensure business continuity.',
         location: 'MNO Engineering Works, Chennai, Tamil Nadu',
         completionDate: 'August 2023',
@@ -66,99 +66,99 @@ export const GalleryData = {
         ]
       }
     ],
-    2: [ // Site 2 - Commercial Plaza (ABC Commercial Ltd)
-      {
-        id: 206,
-        title: 'HT Panel',
-        category: 'HT Panels',
-        description: 'High Tension panel for ABC Commercial Plaza',
-        imageUrl: '/placeholder-ht.jpg',
-        isPlaceholder: true,
-        fullDescription: 'High Tension panel installation for ABC Commercial Plaza, Mumbai. Commercial-grade HT distribution systems with enhanced safety features and monitoring capabilities for the commercial complex.',
-        location: 'ABC Commercial Plaza, Mumbai, Maharashtra',
-        completionDate: 'December 2024',
-        duration: '5 weeks',
-        teamSize: '6 engineers',
-        challenges: 'Commercial building regulations compliance, integration with building management system, high voltage safety in occupied building',
-        solutions: 'Smart building integration, automated monitoring systems, redundant safety mechanisms, compliance with Maharashtra state electrical codes',
-        additionalPhotos: [
-          { id: 1, title: 'HT Panel Design', description: 'High tension panel design and planning' },
-          { id: 2, title: 'BMS Integration', description: 'Building management system integration' },
-          { id: 3, title: 'Safety Systems', description: 'Enhanced safety and monitoring systems' },
-          { id: 4, title: 'Final Testing', description: 'Comprehensive testing and commissioning' }
-        ]
-      },
-      {
-        id: 208,
-        title: 'APFC System',
-        category: 'Power Factor',
-        description: 'Automatic Power Factor Correction system',
-        imageUrl: '/placeholder-apfc.jpg',
-        isPlaceholder: true,
-        fullDescription: 'Automatic Power Factor Correction system installation for ABC Commercial Plaza. Advanced APFC panel with real-time monitoring and automatic capacitor switching for optimal power factor maintenance.',
-        location: 'ABC Commercial Plaza, Mumbai, Maharashtra',
-        completionDate: 'November 2024',
-        duration: '3 weeks',
-        teamSize: '4 engineers',
-        challenges: 'Power factor optimization for commercial loads, real-time monitoring requirements, integration with existing electrical infrastructure',
-        solutions: 'Advanced APFC controller installation, real-time power monitoring, automatic capacitor bank switching, Mumbai utility compliance',
-        additionalPhotos: [
-          { id: 1, title: 'APFC Panel Installation', description: 'Automatic power factor correction panel setup' },
-          { id: 2, title: 'Capacitor Bank Setup', description: 'Capacitor bank installation and wiring' },
-          { id: 3, title: 'Controller Programming', description: 'APFC controller configuration and testing' },
-          { id: 4, title: 'System Commissioning', description: 'Complete system testing and handover' }
-        ]
-      },
-      {
-        id: 209,
-        title: 'Transformer Setup',
-        category: 'Transformers',
-        description: 'Distribution transformer installation and setup',
-        imageUrl: '/placeholder-transformer.jpg',
-        isPlaceholder: true,
-        fullDescription: 'Distribution transformer installation for ABC Commercial Plaza. Complete transformer setup including foundation work, electrical connections, and protection systems for commercial power distribution.',
-        location: 'ABC Commercial Plaza, Mumbai, Maharashtra',
-        completionDate: 'October 2024',
-        duration: '4 weeks',
-        teamSize: '5 engineers',
-        challenges: 'Transformer positioning in commercial area, utility coordination, protection system integration',
-        solutions: 'Crane installation method, utility coordination with MSEB, advanced protection relay systems, oil testing and commissioning',
-        additionalPhotos: [
-          { id: 1, title: 'Transformer Installation', description: 'Distribution transformer positioning and setup' },
-          { id: 2, title: 'Protection Systems', description: 'Relay protection and monitoring systems' },
-          { id: 3, title: 'Oil Testing', description: 'Transformer oil testing and analysis' },
-          { id: 4, title: 'Final Commissioning', description: 'Complete transformer commissioning and testing' }
-        ]
-      },
-      {
-        id: 210,
-        title: 'Load Testing',
-        category: 'Testing',
-        description: 'Comprehensive electrical load testing',
-        imageUrl: '/placeholder-testing.jpg',
-        isPlaceholder: true,
-        fullDescription: 'Comprehensive electrical load testing for ABC Commercial Plaza, Mumbai. Complete electrical system validation including load analysis, capacity testing, and performance verification.',
-        location: 'ABC Commercial Plaza, Mumbai, Maharashtra',
-        completionDate: 'January 2024',
-        duration: '2 weeks',
-        teamSize: '3 engineers',
-        challenges: 'Load testing in operational commercial building, tenant coordination, comprehensive system validation',
-        solutions: 'Phased testing approach, tenant notification systems, advanced testing equipment, minimal disruption scheduling',
-        additionalPhotos: [
-          { id: 1, title: 'Load Analysis', description: 'Comprehensive electrical load analysis' },
-          { id: 2, title: 'Capacity Testing', description: 'System capacity and performance testing' },
-          { id: 3, title: 'Performance Validation', description: 'Complete system performance verification' },
-          { id: 4, title: 'Documentation', description: 'Load testing report and recommendations' }
-        ]
-      }
-    ]
+    // 2: [ // Site 2 - Commercial Plaza (ABC Commercial Ltd)
+    //   {
+    //     id: 206,
+    //     title: 'HT Panel',
+    //     category: 'HT Panels',
+    //     description: 'High Tension panel for ABC Commercial Plaza',
+    //     imageUrl: '/placeholder-ht.jpg',
+    //     isPlaceholder: true,
+    //     fullDescription: 'High Tension panel installation for ABC Commercial Plaza, Mumbai. Commercial-grade HT distribution systems with enhanced safety features and monitoring capabilities for the commercial complex.',
+    //     location: 'ABC Commercial Plaza, Mumbai, Maharashtra',
+    //     completionDate: 'December 2024',
+    //     duration: '5 weeks',
+    //     teamSize: '6 engineers',
+    //     challenges: 'Commercial building regulations compliance, integration with building management system, high voltage safety in occupied building',
+    //     solutions: 'Smart building integration, automated monitoring systems, redundant safety mechanisms, compliance with Maharashtra state electrical codes',
+    //     additionalPhotos: [
+    //       { id: 1, title: 'HT Panel Design', description: 'High tension panel design and planning' },
+    //       { id: 2, title: 'BMS Integration', description: 'Building management system integration' },
+    //       { id: 3, title: 'Safety Systems', description: 'Enhanced safety and monitoring systems' },
+    //       { id: 4, title: 'Final Testing', description: 'Comprehensive testing and commissioning' }
+    //     ]
+    //   },
+    //   {
+    //     id: 208,
+    //     title: 'APFC System',
+    //     category: 'Power Factor',
+    //     description: 'Automatic Power Factor Correction system',
+    //     imageUrl: '/placeholder-apfc.jpg',
+    //     isPlaceholder: true,
+    //     fullDescription: 'Automatic Power Factor Correction system installation for ABC Commercial Plaza. Advanced APFC panel with real-time monitoring and automatic capacitor switching for optimal power factor maintenance.',
+    //     location: 'ABC Commercial Plaza, Mumbai, Maharashtra',
+    //     completionDate: 'November 2024',
+    //     duration: '3 weeks',
+    //     teamSize: '4 engineers',
+    //     challenges: 'Power factor optimization for commercial loads, real-time monitoring requirements, integration with existing electrical infrastructure',
+    //     solutions: 'Advanced APFC controller installation, real-time power monitoring, automatic capacitor bank switching, Mumbai utility compliance',
+    //     additionalPhotos: [
+    //       { id: 1, title: 'APFC Panel Installation', description: 'Automatic power factor correction panel setup' },
+    //       { id: 2, title: 'Capacitor Bank Setup', description: 'Capacitor bank installation and wiring' },
+    //       { id: 3, title: 'Controller Programming', description: 'APFC controller configuration and testing' },
+    //       { id: 4, title: 'System Commissioning', description: 'Complete system testing and handover' }
+    //     ]
+    //   },
+    //   {
+    //     id: 209,
+    //     title: 'Transformer Setup',
+    //     category: 'Transformers',
+    //     description: 'Distribution transformer installation and setup',
+    //     imageUrl: '/placeholder-transformer.jpg',
+    //     isPlaceholder: true,
+    //     fullDescription: 'Distribution transformer installation for ABC Commercial Plaza. Complete transformer setup including foundation work, electrical connections, and protection systems for commercial power distribution.',
+    //     location: 'ABC Commercial Plaza, Mumbai, Maharashtra',
+    //     completionDate: 'October 2024',
+    //     duration: '4 weeks',
+    //     teamSize: '5 engineers',
+    //     challenges: 'Transformer positioning in commercial area, utility coordination, protection system integration',
+    //     solutions: 'Crane installation method, utility coordination with MSEB, advanced protection relay systems, oil testing and commissioning',
+    //     additionalPhotos: [
+    //       { id: 1, title: 'Transformer Installation', description: 'Distribution transformer positioning and setup' },
+    //       { id: 2, title: 'Protection Systems', description: 'Relay protection and monitoring systems' },
+    //       { id: 3, title: 'Oil Testing', description: 'Transformer oil testing and analysis' },
+    //       { id: 4, title: 'Final Commissioning', description: 'Complete transformer commissioning and testing' }
+    //     ]
+    //   },
+    //   {
+    //     id: 210,
+    //     title: 'Load Testing',
+    //     category: 'Testing',
+    //     description: 'Comprehensive electrical load testing',
+    //     imageUrl: '/placeholder-testing.jpg',
+    //     isPlaceholder: true,
+    //     fullDescription: 'Comprehensive electrical load testing for ABC Commercial Plaza, Mumbai. Complete electrical system validation including load analysis, capacity testing, and performance verification.',
+    //     location: 'ABC Commercial Plaza, Mumbai, Maharashtra',
+    //     completionDate: 'January 2024',
+    //     duration: '2 weeks',
+    //     teamSize: '3 engineers',
+    //     challenges: 'Load testing in operational commercial building, tenant coordination, comprehensive system validation',
+    //     solutions: 'Phased testing approach, tenant notification systems, advanced testing equipment, minimal disruption scheduling',
+    //     additionalPhotos: [
+    //       { id: 1, title: 'Load Analysis', description: 'Comprehensive electrical load analysis' },
+    //       { id: 2, title: 'Capacity Testing', description: 'System capacity and performance testing' },
+    //       { id: 3, title: 'Performance Validation', description: 'Complete system performance verification' },
+    //       { id: 4, title: 'Documentation', description: 'Load testing report and recommendations' }
+    //     ]
+    //   }
+    // ]
   },
 
   siteNames: {
     1: "Site 1 - Industrial Complex",
-    2: "Site 2 - Commercial Plaza", 
-    3: "Site 3 - Manufacturing Unit",
-    4: "Site 4 - Hospital Complex"
+    // 2: "Site 2 - Commercial Plaza", 
+    // 3: "Site 3 - Manufacturing Unit",
+    // 4: "Site 4 - Hospital Complex"
   },
 
   siteDetails: {
@@ -169,27 +169,27 @@ export const GalleryData = {
       completionYear: "2023",
       projectValue: "₹25 Lakhs"
     },
-    2: {
-      name: "Commercial Plaza", 
-      location: "Mumbai, Maharashtra",
-      clientName: "ABC Commercial Ltd",
-      completionYear: "2024", 
-      projectValue: "₹45 Lakhs"
-    },
-    3: {
-      name: "Manufacturing Unit",
-      location: "Bangalore, Karnataka", 
-      clientName: "XYZ Manufacturing Pvt Ltd",
-      completionYear: "2025 (Ongoing)",
-      projectValue: "₹60 Lakhs"
-    },
-    4: {
-      name: "Hospital Complex",
-      location: "Delhi, India",
-      clientName: "City Hospital Trust", 
-      completionYear: "Coming Soon",
-      projectValue: "₹80 Lakhs"
-    }
+    // 2: {
+    //   name: "Commercial Plaza", 
+    //   location: "Mumbai, Maharashtra",
+    //   clientName: "ABC Commercial Ltd",
+    //   completionYear: "2024", 
+    //   projectValue: "₹45 Lakhs"
+    // },
+    // 3: {
+    //   name: "Manufacturing Unit",
+    //   location: "Bangalore, Karnataka", 
+    //   clientName: "XYZ Manufacturing Pvt Ltd",
+    //   completionYear: "2025 (Ongoing)",
+    //   projectValue: "₹60 Lakhs"
+    // },
+    // 4: {
+    //   name: "Hospital Complex",
+    //   location: "Delhi, India",
+    //   clientName: "City Hospital Trust", 
+    //   completionYear: "Coming Soon",
+    //   projectValue: "₹80 Lakhs"
+    // }
   },
 
   categories: ['All', 'HT Panels', 'LT Panels', 'Transformers', 'Maintenance', 'Testing', 'Design', 'Planning', 'Power Factor']

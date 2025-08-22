@@ -197,7 +197,7 @@ export default function Project() {
                     </div>
 
                     {/* Hover Overlay */}
-                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
+                    <div className="absolute inset-0   bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
                       <div className="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4">
                         <h3 className="text-lg font-bold mb-2">{site.siteName}</h3>
                         <p className="text-sm text-gray-200 mb-3">{site.description}</p>

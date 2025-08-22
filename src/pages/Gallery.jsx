@@ -3,11 +3,6 @@ import GalleryData from '../Data/GalleryData';
 
 export default function Gallery() {
   const { galleryImagesBySite, siteNames, siteDetails ,categories} = GalleryData;
-
-
-
-
-
   const [urlParams, setUrlParams] = useState({ site: null, project: null });
   const [filteredImages, setFilteredImages] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -28,11 +23,9 @@ export default function Gallery() {
   // Filter images based on URL parameters and category
   useEffect(() => {
     let images = [];
-    
     if (urlParams.site) {
       // Show images from specific site
       images = galleryImagesBySite[urlParams.site] || [];
-      
       if (urlParams.project) {
         // Show specific project only
         images = images.filter(img => img.id === urlParams.project);
@@ -42,11 +35,9 @@ export default function Gallery() {
       images = Object.values(galleryImagesBySite).flat();
     }
 
-    // Filter by category
     if (selectedCategory !== 'All') {
       images = images.filter(img => img.category === selectedCategory);
     }
-
     setFilteredImages(images);
   }, [urlParams, selectedCategory]);
 

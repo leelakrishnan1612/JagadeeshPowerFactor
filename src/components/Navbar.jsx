@@ -150,7 +150,7 @@ export default function Navbar() {
                 Services
               </NavLink>
               <NavLink 
-                to="/gallery" 
+                to="/project" 
                 className={({ isActive }) => 
                   `px-4 py-3 rounded-xl font-medium transition-all duration-200 ${
                     isActive 

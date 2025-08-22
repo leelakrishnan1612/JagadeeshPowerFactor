@@ -4,12 +4,10 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './App.jsx'
 import './index.css'
 
-// Determine basename based on hostname
-const basename = window.location.hostname === 'localhost' ? '/' : '/JagadeeshPowerFactor'
-
+// Much simpler for Netlify - no basename needed!
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter basename={basename}>
+    <BrowserRouter>
       <App />
     </BrowserRouter>
   </StrictMode>,

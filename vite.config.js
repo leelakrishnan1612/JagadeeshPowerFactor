@@ -5,15 +5,8 @@ import tailwindcss from '@tailwindcss/vite'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: process.env.NODE_ENV === 'production' ? '/JagadeeshPowerFactor/' : '/',
+  base: '/', // No need for complex base path on Netlify!
   build: {
-    outDir: 'dist',
-    assetsDir: 'assets',
-    sourcemap: false,
-    rollupOptions: {
-      output: {
-        manualChunks: undefined,
-      }
-    }
+    outDir: 'dist'
   }
 })

@@ -4,13 +4,14 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './App.jsx'
 import './index.css'
 
-// Determine basename based on hostname
-const basename = window.location.hostname === 'localhost' ? '/' : '/JagadeeshPowerFactor'
+// Use environment variable or fallback to hostname detection
+const basename = process.env.VITE_BASE_URL || 
+  (window.location.hostname === 'localhost' ? '/' : '/JagadeeshPowerFactor')
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter basename={basename}>
       <App />
     </BrowserRouter>
-  </StrictMode>,
+  </StrictMode>
 )

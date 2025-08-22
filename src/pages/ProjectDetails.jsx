@@ -15,11 +15,11 @@ export default function ProjectDetails() {
   useEffect(() => {
     // Search through all sites to find the project
     let foundProject = null;
-    
+
     // Flatten all projects from all sites and search
     const allProjects = Object.values(galleryImagesBySite).flat();
     foundProject = allProjects.find(project => project.id === parseInt(projectId));
-    
+
     if (foundProject) {
       setProject(foundProject)
     }
@@ -29,7 +29,7 @@ export default function ProjectDetails() {
   // Function to download project report as PDF
   const downloadProjectReport = async (project) => {
     setIsGeneratingPDF(true);
-    
+
     try {
       // Create a temporary div for PDF generation
       const pdfContainer = document.createElement('div');
@@ -41,7 +41,7 @@ export default function ProjectDetails() {
       pdfContainer.style.backgroundColor = 'white';
       pdfContainer.style.fontFamily = 'Arial, sans-serif';
       pdfContainer.style.color = '#333';
-      
+
       // Generate PDF content with HTML structure
       pdfContainer.innerHTML = `
         <div style="text-align: center; margin-bottom: 30px;">
@@ -131,9 +131,9 @@ export default function ProjectDetails() {
           <p style="margin: 5px 0;">© 2024 Jagadeesh PowerFactor. All rights reserved.</p>
         </div>
       `;
-      
+
       document.body.appendChild(pdfContainer);
-      
+
       // Convert HTML to canvas
       const canvas = await html2canvas(pdfContainer, {
         scale: 2,
@@ -141,10 +141,10 @@ export default function ProjectDetails() {
         allowTaint: true,
         backgroundColor: '#ffffff'
       });
-      
+
       // Remove temporary container
       document.body.removeChild(pdfContainer);
-      
+
       // Create PDF
       const imgData = canvas.toDataURL('image/png');
       const pdf = new jsPDF('p', 'mm', 'a4');
@@ -152,14 +152,14 @@ export default function ProjectDetails() {
       const pdfHeight = pdf.internal.pageSize.getHeight();
       const imgWidth = pdfWidth - 20; // 10mm margin on each side
       const imgHeight = (canvas.height * imgWidth) / canvas.width;
-      
+
       let heightLeft = imgHeight;
       let position = 10; // 10mm top margin
-      
+
       // Add first page
       pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
       heightLeft -= (pdfHeight - 20); // Account for margins
-      
+
       // Add additional pages if needed
       while (heightLeft >= 0) {
         position = heightLeft - imgHeight + 10;
@@ -167,14 +167,14 @@ export default function ProjectDetails() {
         pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
         heightLeft -= (pdfHeight - 20);
       }
-      
+
       // Save PDF
       const fileName = `Project_Report_${project.title.replace(/\s+/g, '_')}_${project.id.toString().padStart(3, '0')}.pdf`;
       pdf.save(fileName);
-      
+
       // Show success message
       alert(`PDF report for "${project.title}" has been downloaded successfully!`);
-      
+
     } catch (error) {
       console.error('Error generating PDF:', error);
       alert('Error generating PDF. Please try again.');
@@ -323,25 +323,57 @@ export default function ProjectDetails() {
             <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">Project Photos</h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
               {project.additionalPhotos.map((photo) => (
-                <div key={photo.id} className="bg-gray-100 rounded-xl p-4 text-center hover:bg-gray-200 transition-colors">
-                  <div className="w-20 h-20 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-3">
-                    <span className="text-3xl">📸</span>
+                <div key={photo.id} className="bg-gray-100 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                  {/* Check if photo has imageUrl, otherwise show placeholder */}
+                  {photo.imageUrl ? (
+                    <div className="aspect-square relative">
+                      <img
+                        src={photo.imageUrl}
+                        alt={photo.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        onError={(e) => {
+                          // Fallback to placeholder if image fails to load
+                          e.target.style.display = 'none';
+                          e.target.nextSibling.style.display = 'flex';
+                        }}
+                      />
+                      {/* Fallback placeholder (hidden by default) */}
+                      <div className="w-full h-full bg-blue-100 flex items-center justify-center absolute top-0 left-0" style={{ display: 'none' }}>
+                        <span className="text-4xl">📸</span>
+                      </div>
+                    </div>
+                  ) : (
+                    // Show placeholder if no imageUrl
+                    <div className="aspect-square bg-blue-100 flex items-center justify-center">
+                      <span className="text-4xl">📸</span>
+                    </div>
+                  )}
+
+                  <div className="p-4">
+                    <h4 className="text-sm font-medium text-gray-700 mb-2">{photo.title}</h4>
+                    <p className="text-xs text-gray-500">{photo.description}</p>
                   </div>
-                  <h4 className="text-sm font-medium text-gray-700 mb-2">{photo.title}</h4>
-                  <p className="text-xs text-gray-500">{photo.description}</p>
                 </div>
               ))}
             </div>
-            <p className="text-sm text-gray-500 mt-6 text-center">
-              Additional photos will be added as the project progresses
-            </p>
+
+            {/* Show different message based on whether images are available */}
+            {project.additionalPhotos.some(photo => photo.imageUrl) ? (
+              <p className="text-sm text-gray-500 mt-6 text-center">
+                Click on images to view full size
+              </p>
+            ) : (
+              <p className="text-sm text-gray-500 mt-6 text-center">
+                Additional photos will be added as the project progresses
+              </p>
+            )}
           </div>
 
           {/* Action Buttons */}
           <div className="bg-white rounded-2xl sm:rounded-3xl shadow-xl p-6 sm:p-8 border border-gray-100">
             <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 text-center">Get Project Report</h3>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
+              <button
                 onClick={() => downloadProjectReport(project)}
                 disabled={isGeneratingPDF}
                 className="px-8 py-4 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition-colors flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed text-lg"
@@ -361,8 +393,8 @@ export default function ProjectDetails() {
                   </>
                 )}
               </button>
-              
-              <button 
+
+              <button
                 onClick={() => shareProject(project)}
                 className="px-8 py-4 bg-gray-600 text-white rounded-full font-medium hover:bg-gray-700 transition-colors flex items-center justify-center gap-3 text-lg"
               >

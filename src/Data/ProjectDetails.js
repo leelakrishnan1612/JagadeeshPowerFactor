@@ -5,8 +5,8 @@
         title: 'MCC Panel',
         category: 'LT Panels',
         description: 'Motor Control Center panel for MNO Engineering Works',
-        imageUrl: '/placeholder-mcc.jpg',
-        isPlaceholder: true,
+        imageUrl: '/images/sites/ste1.jpg',
+        isPlaceholder: false,
         fullDescription: 'Motor Control Center panel installation for MNO Engineering Works, Chennai. Includes motor starters, overload protection, and control systems for multiple motors in the industrial facility.',
         location: 'MNO Engineering Works, Chennai, Tamil Nadu',
         completionDate: 'October 2023',
@@ -15,11 +15,31 @@
         challenges: 'xisting industrial setup',
         solutions: 'Modular MCC design, advanced control logic implementation, seamless integration with existing systems',
         additionalPhotos: [
-          { id: 1, title: 'MCC Layout Design', description: 'Motor control center design and planning phase' },
-          { id: 2, title: 'Motor Starters Installation', description: 'Individual motor control units installation' },
-          { id: 3, title: 'Control System Integration', description: 'Central control system integration and testing' },
-          { id: 4, title: 'Final Commissioning', description: 'Complete system testing and handover' }
-        ]
+    { 
+      id: 1, 
+      title: 'MCC Layout Design', 
+      description: 'Motor control center design and planning phase',
+      imageUrl: '/images/sites/site1.jpg' // Add actual image path
+    },
+    { 
+      id: 2, 
+      title: 'Motor Starters Installation', 
+      description: 'Individual motor control units installation',
+      imageUrl: '/images/projects/motor-starters.jpg' // Add actual image path
+    },
+    { 
+      id: 3, 
+      title: 'Control System Integration', 
+      description: 'Central control system integration and testing',
+      imageUrl: '/images/projects/control-system.jpg' // Add actual image path
+    },
+    { 
+      id: 4, 
+      title: 'Final Commissioning', 
+      description: 'Complete system testing and handover',
+      imageUrl: '/images/projects/final-commissioning.jpg' // Add actual image path
+    }
+  ]
       },
       {
         id: 8,
@@ -36,11 +56,31 @@
         challenges: 'Critical system failure during peak production, urgent timeline, parts availability',
         solutions: 'Emergency parts procurement from Chennai suppliers, round-the-clock repair work, temporary bypass systems',
         additionalPhotos: [
-          { id: 1, title: 'Fault Analysis', description: 'Comprehensive switchgear failure investigation' },
-          { id: 2, title: 'Emergency Repair Work', description: '24/7 emergency repair operations' },
-          { id: 3, title: 'System Testing', description: 'Post-repair verification and load testing' },
-          { id: 4, title: 'Documentation', description: 'Complete repair documentation and handover' }
-        ]
+    { 
+      id: 1, 
+      title: 'MCC Layout Design', 
+      description: 'Motor control center design and planning phase',
+      imageUrl: '/images/projects/mcc-layout-design.jpg' // Add actual image path
+    },
+    { 
+      id: 2, 
+      title: 'Motor Starters Installation', 
+      description: 'Individual motor control units installation',
+      imageUrl: '/images/projects/motor-starters.jpg' // Add actual image path
+    },
+    { 
+      id: 3, 
+      title: 'Control System Integration', 
+      description: 'Central control system integration and testing',
+      imageUrl: '/images/projects/control-system.jpg' // Add actual image path
+    },
+    { 
+      id: 4, 
+      title: 'Final Commissioning', 
+      description: 'Complete system testing and handover',
+      imageUrl: '/images/projects/final-commissioning.jpg' // Add actual image path
+    }
+  ]
       },
       {
         id: 9,
@@ -57,11 +97,31 @@
         challenges: 'Complex industrial design requirements, Tamil Nadu electricity board compliance, space constraints',
         solutions: '3D modeling software utilization, thermal analysis tools, modular design approach for easy maintenance',
         additionalPhotos: [
-          { id: 1, title: '3D Panel Design', description: 'Advanced 3D modeling and visualization' },
-          { id: 2, title: 'Thermal Analysis', description: 'Heat dissipation study and cooling system design' },
-          { id: 3, title: 'Layout Planning', description: 'Optimal component arrangement and accessibility' },
-          { id: 4, title: 'Compliance Verification', description: 'Standards compliance and safety verification' }
-        ]
+    { 
+      id: 1, 
+      title: 'MCC Layout Design', 
+      description: 'Motor control center design and planning phase',
+      imageUrl: '/images/projects/mcc-layout-design.jpg' // Add actual image path
+    },
+    { 
+      id: 2, 
+      title: 'Motor Starters Installation', 
+      description: 'Individual motor control units installation',
+      imageUrl: '/images/projects/motor-starters.jpg' // Add actual image path
+    },
+    { 
+      id: 3, 
+      title: 'Control System Integration', 
+      description: 'Central control system integration and testing',
+      imageUrl: '/images/projects/control-system.jpg' // Add actual image path
+    },
+    { 
+      id: 4, 
+      title: 'Final Commissioning', 
+      description: 'Complete system testing and handover',
+      imageUrl: '/images/projects/final-commissioning.jpg' // Add actual image path
+    }
+  ]
       }
     ],
     2: [ // Site 2 - Commercial Plaza (ABC Commercial Ltd) - FIXED with unique IDs and correct details

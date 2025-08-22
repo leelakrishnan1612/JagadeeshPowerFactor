@@ -117,7 +117,7 @@ export default function Services() {
 
                 <div className="relative z-10 text-center">
                     <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 sm:mb-6">
-                        Our Services
+                     Services
                     </h1>
                     <p className="text-lg sm:text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto leading-relaxed px-4">
                         Comprehensive electrical solutions for industrial, commercial, and residential applications

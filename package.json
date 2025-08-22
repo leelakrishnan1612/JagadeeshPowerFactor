@@ -1,12 +1,12 @@
 {
-  "name": "vite-project",
+  "name": "jagadeesh-power-factor",
   "homepage": "https://leelakrishnan1612.github.io/JagadeeshPowerFactor/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/JagadeeshPowerFactor/",
+    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",

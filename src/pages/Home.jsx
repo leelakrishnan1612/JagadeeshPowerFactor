@@ -82,11 +82,15 @@ export default function Home() {
 
             {/* Stats Section */}
             <section className="py-16 sm:py-20 px-4 sm:px-4 bg-gradient-to-r from-blue-600 to-indigo-600">
-                <div className="max-w-7xl ml-auto">
+                <div className="max-w-7xl mx-auto">
                     <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-center">
                         <div className="text-white">
                             <div className="text-3xl sm:text-4xl font-black mb-2">5+</div>
                             <div className="text-sm sm:text-base text-blue-100">HT Projects Completed</div>
+                        </div>
+                        <div className="text-white">
+                            <div className="text-3xl sm:text-4xl font-black mb-2">250+</div>
+                            <div className="text-sm sm:text-base text-blue-100">Panel Works</div>
                         </div>
                         <div className="text-white">
                             <div className="text-3xl sm:text-4xl font-black mb-2">10+</div>
@@ -97,6 +101,7 @@ export default function Home() {
                             <div className="text-3xl sm:text-4xl font-black mb-2">4+</div>
                             <div className="text-sm sm:text-base text-blue-100">Years Experience</div>
                         </div>
+
                     </div>
                 </div>
             </section>

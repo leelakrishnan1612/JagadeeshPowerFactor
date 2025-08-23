@@ -1,4 +1,5 @@
 // Gallery Data Component
+import { getOptimizedImage, getResponsiveImages } from '../utils/cloudinary';
 export const GalleryData = {
   galleryImagesBySite: {
     1: [ // Site 1 - Industrial Complex (MNO Engineering Works)
@@ -7,7 +8,8 @@ export const GalleryData = {
         title: 'MCC Panel',
         category: 'LT Panels',
         description: 'Motor Control Center panel for MNO Engineering Works',
-        imageUrl: '/images/bgimages/panelworking.jpg',
+        imageUrl: getOptimizedImage('panelworking_qjwilh'),
+        responsiveImages: getResponsiveImages('panelworking_qjwilh'),
         isPlaceholder: false,
         fullDescription: 'Motor Control Center panel installation for MNO Engineering Works, Chennai. Includes motor starters, overload protection, and control systems for multiple motors in the industrial facility.',
         location: 'MNO Engineering Works, Chennai, Tamil Nadu',
@@ -28,7 +30,8 @@ export const GalleryData = {
         title: 'Site Maintenance',
         category: 'Maintenance',
         description: 'Emergency switchgear repair services',
-        imageUrl: '/images/bgimages/maintainingsite.jpeg',
+         imageUrl: getOptimizedImage('maintainingsite_oagqpq'),
+        responsiveImages: getResponsiveImages('maintainingsite_oagqpq'),
         isPlaceholder: false,
         fullDescription: 'Emergency repair of critical switchgear failure at MNO Engineering Works industrial complex. 24/7 emergency response with minimal production downtime to ensure business continuity.',
         location: 'MNO Engineering Works, Chennai, Tamil Nadu',
@@ -49,7 +52,30 @@ export const GalleryData = {
         title: 'Panel Design',
         category: 'Design',
         description: 'Custom panel design and layout for industrial facility',
-        imageUrl: '/images/bgimages/bgpaneldegisn.jpg',
+         imageUrl: getOptimizedImage('bgpaneldegisn_o8v4o2'),
+        responsiveImages: getResponsiveImages('bgpaneldegisn_o8v4o2'),
+        isPlaceholder: false,
+        fullDescription: 'Custom electrical panel design for MNO Engineering Works industrial complex. Advanced design including 3D modeling, thermal analysis, and compliance verification according to Indian standards.',
+        location: 'MNO Engineering Works, Chennai, Tamil Nadu',
+        completionDate: 'July 2023',
+        duration: '4 weeks',
+        teamSize: '2 engineers',
+        challenges: 'Complex industrial design requirements, Tamil Nadu electricity board compliance, space constraints',
+        solutions: '3D modeling software utilization, thermal analysis tools, modular design approach for easy maintenance',
+        additionalPhotos: [
+          { id: 1, title: '3D Panel Design', description: 'Advanced 3D modeling and visualization' },
+          { id: 2, title: 'Thermal Analysis', description: 'Heat dissipation study and cooling system design' },
+          { id: 3, title: 'Layout Planning', description: 'Optimal component arrangement and accessibility' },
+          { id: 4, title: 'Compliance Verification', description: 'Standards compliance and safety verification' }
+        ]
+      } ,
+      {
+        id: 9,
+        title: 'Transformer installation',
+        category: 'installation',
+        description: 'Custom panel design and layout for industrial facility',
+        imageUrl: getOptimizedImage('bgtransformer_anptht'),
+        responsiveImages: getResponsiveImages('bgtransformer_anptht'),
         isPlaceholder: false,
         fullDescription: 'Custom electrical panel design for MNO Engineering Works industrial complex. Advanced design including 3D modeling, thermal analysis, and compliance verification according to Indian standards.',
         location: 'MNO Engineering Works, Chennai, Tamil Nadu',

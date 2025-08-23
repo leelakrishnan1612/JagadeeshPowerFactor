@@ -116,15 +116,11 @@ export default function ProjectDetails() {
           </div>
 
           {/* Project Details Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+          <div className="grid grid-cols-1 mb-8">
             {/* Project Details */}
             <div className="bg-white rounded-2xl sm:rounded-3xl shadow-xl p-6 sm:p-8 border border-gray-100">
               <h3 className="text-xl font-bold text-gray-900 mb-6">Project Details</h3>
-              <div className="space-y-4">
-                <div className="flex justify-between items-center py-3 border-b border-gray-100">
-                  <span className="text-gray-600">Location:</span>
-                  <span className="font-medium text-gray-900">{project.location}</span>
-                </div>
+              <div className="space-y-1">
                 <div className="flex justify-between items-center py-3 border-b border-gray-100">
                   <span className="text-gray-600">Completion Date:</span>
                   <span className="font-medium text-gray-900">{project.completionDate}</span>
@@ -141,19 +137,7 @@ export default function ProjectDetails() {
             </div>
 
             {/* Challenges & Solutions */}
-            <div className="bg-white rounded-2xl sm:rounded-3xl shadow-xl p-6 sm:p-8 border border-gray-100">
-              <h3 className="text-xl font-bold text-gray-900 mb-6">Challenges & Solutions</h3>
-              <div className="space-y-6">
-                <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-r-lg">
-                  <h4 className="text-red-700 font-semibold mb-2">Challenges</h4>
-                  <p className="text-red-600">{project.challenges}</p>
-                </div>
-                <div className="bg-green-50 border-l-4 border-green-500 p-4 rounded-r-lg">
-                  <h4 className="text-green-700 font-semibold mb-2">Solutions</h4>
-                  <p className="text-green-600">{project.solutions}</p>
-                </div>
-              </div>
-            </div>
+           
           </div>
 
           {/* Project Photos */}

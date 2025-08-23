@@ -189,12 +189,7 @@ export default function Project() {
                       </span>
                     </div>
 
-                    {/* Projects Count Badge */}
-                    <div className="absolute top-2 sm:top-3 right-2 sm:right-3">
-                      <span className="px-2 py-1 bg-green-600 text-white text-xs font-medium rounded-full">
-                        {site.totalProjects} Projects
-                      </span>
-                    </div>
+                    
 
                     {/* Hover Overlay - Hidden on mobile, shown on larger screens */}
                     <div className="absolute inset-0  bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 items-center justify-center hidden lg:flex">
@@ -237,10 +232,7 @@ export default function Project() {
                         <span className="text-gray-500">Client:</span>
                         <span className="font-medium text-gray-700 truncate ml-2">{site.clientName}</span>
                       </div>
-                      <div className="flex justify-between items-center text-xs">
-                        <span className="text-gray-500">Value:</span>
-                        <span className="font-medium text-green-600">{site.projectValue}</span>
-                      </div>
+                      
                       <div className="flex justify-between items-center text-xs">
                         <span className="text-gray-500">Year:</span>
                         <span className="font-medium text-gray-700">{site.completionYear}</span>
@@ -248,9 +240,7 @@ export default function Project() {
                     </div>
 
                     <div className="flex items-center justify-between">
-                      <span className="text-xs text-blue-600 font-medium">
-                        {site.totalProjects} Projects
-                      </span>
+                     
                       <span className="text-xs text-gray-400">
                         Site #{site.siteId}
                       </span>

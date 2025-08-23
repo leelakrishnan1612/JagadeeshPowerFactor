@@ -6,11 +6,11 @@ export const projectSitesData = [
         siteName: "Industrial Complex",
         location: "Chennai, Tamil Nadu",
         completionYear: "2023",
-        totalProjects: 3,
+        totalProjects: 4,
         category: "Industrial",
         description: "Complete electrical infrastructure for industrial facility",
         // Updated to use Cloudinary image
-        imageUrl: getOptimizedImage('panelworking_qjwilh', {
+        imageUrl: getOptimizedImage('site1_qwfjog', {
             width: 800,
             height: 600,
             quality: 'auto',
@@ -63,9 +63,8 @@ export const getPortfolioStats = () => {
         totalSites,
         totalProjects,
         categoriesCount: categories.length,
-        totalValue: `₹${totalValue} Lakhs`,
         categories,
-        yearsExperience: 15,
+        yearsExperience: 4,
         successRate: 100
     };
 };

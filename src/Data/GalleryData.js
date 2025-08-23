@@ -70,7 +70,7 @@ export const GalleryData = {
         ]
       } ,
       {
-        id: 9,
+        id: 10,
         title: 'Transformer installation',
         category: 'installation',
         description: 'Custom panel design and layout for industrial facility',
@@ -82,10 +82,10 @@ export const GalleryData = {
         completionDate: 'July 2023',
         duration: '4 weeks',
         teamSize: '2 engineers',
-        challenges: 'Complex industrial design requirements, Tamil Nadu electricity board compliance, space constraints',
+        challenges: 'Complex indusl Nadu electricity board compliance, space constraints',
         solutions: '3D modeling software utilization, thermal analysis tools, modular design approach for easy maintenance',
         additionalPhotos: [
-          { id: 1, title: '3D Panel Design', description: 'Advanced 3D modeling and visualization' },
+          { id: 1, title: '3D Panel Design', description: 'Advanced 3D modeling and visualization' ,},
           { id: 2, title: 'Thermal Analysis', description: 'Heat dissipation study and cooling system design' },
           { id: 3, title: 'Layout Planning', description: 'Optimal component arrangement and accessibility' },
           { id: 4, title: 'Compliance Verification', description: 'Standards compliance and safety verification' }

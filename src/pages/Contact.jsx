@@ -34,12 +34,14 @@ export default function Contact() {
 
                             <div className="space-y-6 sm:space-y-8">
                                 <div className="flex items-center gap-4 sm:gap-6 p-4 sm:p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl sm:rounded-2xl border border-blue-100 hover:border-blue-200 transition-colors">
-                                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-blue-100 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0">
-                                        <span className="text-xl sm:text-2xl">📍</span>
+                                    <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-blue-200 transition-colors">
+                                        <svg className="w-8 h-8 text-blue-600" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                                        </svg>
                                     </div>
                                     <div>
                                         <div className="font-semibold text-gray-900 text-base sm:text-lg mb-1">Address</div>
-                                        <div className="text-sm sm:text-base text-gray-600">123 Industrial Zone, Electrical Street<br />City, State - 123456</div>
+                                        <div className="text-sm sm:text-base text-gray-600">No: 318/30, Thiruvalluvar Salai, Block 11, J J Nagar, Mogappair East, Chennai, Tamil Nadu 600052</div>
                                     </div>
                                 </div>
 
@@ -58,8 +60,15 @@ export default function Contact() {
                                         <span className="text-xl sm:text-2xl">✉️</span>
                                     </div>
                                     <div>
-                                        <div className="font-semibold text-gray-900 text-base sm:text-lg mb-1">Email</div>
-                                        <div className="text-sm sm:text-base text-gray-600">info@powertech.com</div>
+                                        <div className="font-semibold text-gray-900 text-base sm:text-lg mb-1">
+                                            Email
+                                        </div>
+                                        <a
+                                            href="mailto:jagadeeshpowerfactor@gmail.com"
+                                            className="text-sm sm:text-base text-gray-600 hover:text-blue-600 underline"
+                                        >
+                                            jagadeeshpowerfactor@gmail.com
+                                        </a>
                                     </div>
                                 </div>
 
@@ -97,7 +106,7 @@ export default function Contact() {
                                 </WhatsAppButton>
                             </div>
 
-                            
+
                         </div>
                     </div>
                 </div>

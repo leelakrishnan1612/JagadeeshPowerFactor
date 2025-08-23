@@ -1,3 +1,4 @@
+import { getOptimizedImage, getResponsiveImages } from '../utils/cloudinary';
 
 export const projectSitesData = [
     {
@@ -8,13 +9,22 @@ export const projectSitesData = [
         totalProjects: 3,
         category: "Industrial",
         description: "Complete electrical infrastructure for industrial facility",
-        imageUrl: '/images/sites/site1.jpg',
+        // Updated to use Cloudinary image
+        imageUrl: getOptimizedImage('panelworking_qjwilh', {
+            width: 800,
+            height: 600,
+            quality: 'auto',
+            format: 'webp'
+        }),
+        // Add responsive images for different screen sizes
+        responsiveImages: getResponsiveImages('panelworking_qjwilh'),
         isPlaceholder: false,
         clientName: "MNO Engineering Works",
         projectValue: "₹25 Lakhs",
         keyFeatures: ["MCC Panel Installation", "Emergency Repair Systems", "Custom Panel Design"],
         projects: ["MCC Panel", "Emergency Repair", "Panel Design"]
     },
+    // Uncomment and add more sites as needed
     // {
     //     siteId: 2,
     //     siteName: "Commercial Plaza",
@@ -23,17 +33,20 @@ export const projectSitesData = [
     //     totalProjects: 4,
     //     category: "Commercial",
     //     description: "Modern electrical systems for commercial complex",
-    //     imageUrl: '/placeholder-commercial.jpg',
-    //     isPlaceholder: true,
+    //     imageUrl: getOptimizedImage('your_image_public_id_here', {
+    //         width: 800,
+    //         height: 600,
+    //         quality: 'auto',
+    //         format: 'webp'
+    //     }),
+    //     responsiveImages: getResponsiveImages('your_image_public_id_here'),
+    //     isPlaceholder: false,
     //     clientName: "ABC Commercial Ltd",
     //     projectValue: "₹45 Lakhs",
     //     keyFeatures: ["HT Panel Installation", "APFC Systems", "Load Testing"],
     //     projects: ["HT Panel", "APFC System", "Transformer Setup", "Load Testing"]
     // },
-    
-   
-  
-   
+
 ];
 
 // Portfolio statistics (computed from data)

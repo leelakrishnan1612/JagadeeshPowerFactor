@@ -1,16 +1,11 @@
-
 import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import jsPDF from 'jspdf'
-import html2canvas from 'html2canvas'
 import { galleryImagesBySite } from '../Data/ProjectDetails'
 
 export default function ProjectDetails() {
   const { projectId } = useParams()
   const [project, setProject] = useState(null)
-  const [isGeneratingPDF, setIsGeneratingPDF] = useState(false)
   const [loading, setLoading] = useState(true)
-
 
   useEffect(() => {
     // Search through all sites to find the project
@@ -25,163 +20,6 @@ export default function ProjectDetails() {
     }
     setLoading(false)
   }, [projectId])
-
-  // Function to download project report as PDF
-  const downloadProjectReport = async (project) => {
-    setIsGeneratingPDF(true);
-
-    try {
-      // Create a temporary div for PDF generation
-      const pdfContainer = document.createElement('div');
-      pdfContainer.style.position = 'absolute';
-      pdfContainer.style.left = '-9999px';
-      pdfContainer.style.top = '0';
-      pdfContainer.style.width = '800px';
-      pdfContainer.style.padding = '40px';
-      pdfContainer.style.backgroundColor = 'white';
-      pdfContainer.style.fontFamily = 'Arial, sans-serif';
-      pdfContainer.style.color = '#333';
-
-      // Generate PDF content with HTML structure
-      pdfContainer.innerHTML = `
-        <div style="text-align: center; margin-bottom: 30px;">
-          <h1 style="color: #1e40af; margin: 0; font-size: 28px;">JAGADEESH POWERFACTOR</h1>
-          <p style="color: #6b7280; margin: 5px 0; font-size: 14px;">Electrical Engineering Solutions</p>
-          <hr style="border: 2px solid #1e40af; margin: 20px 0;">
-        </div>
-        
-        <div style="margin-bottom: 30px;">
-          <h2 style="color: #1e40af; font-size: 24px; margin-bottom: 15px;">PROJECT REPORT</h2>
-          <div style="background: #f3f4f6; padding: 20px; border-radius: 8px;">
-            <h3 style="color: #374151; font-size: 20px; margin: 0 0 15px 0;">${project.title}</h3>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; font-size: 14px;">
-              <div><strong>Category:</strong> ${project.category}</div>
-              <div><strong>Project ID:</strong> #${project.id.toString().padStart(3, '0')}</div>
-              <div><strong>Location:</strong> ${project.location}</div>
-              <div><strong>Completion Date:</strong> ${project.completionDate}</div>
-              <div><strong>Duration:</strong> ${project.duration}</div>
-              <div><strong>Team Size:</strong> ${project.teamSize}</div>
-            </div>
-          </div>
-        </div>
-        
-        <div style="margin-bottom: 30px;">
-          <h3 style="color: #1e40af; font-size: 18px; margin-bottom: 15px;">PROJECT OVERVIEW</h3>
-          <p style="line-height: 1.6; font-size: 14px; text-align: justify;">${project.fullDescription}</p>
-        </div>
-        
-        <div style="margin-bottom: 30px;">
-          <h3 style="color: #1e40af; font-size: 18px; margin-bottom: 15px;">CHALLENGES & SOLUTIONS</h3>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-            <div style="background: #fef2f2; padding: 15px; border-radius: 6px; border-left: 4px solid #dc2626;">
-              <h4 style="color: #dc2626; margin: 0 0 10px 0; font-size: 16px;">Challenges</h4>
-              <p style="margin: 0; font-size: 14px;">${project.challenges}</p>
-            </div>
-            <div style="background: #f0fdf4; padding: 15px; border-radius: 6px; border-left: 4px solid #16a34a;">
-              <h4 style="color: #16a34a; margin: 0 0 10px 0; font-size: 16px;">Solutions</h4>
-              <p style="margin: 0; font-size: 14px;">${project.solutions}</p>
-            </div>
-          </div>
-        </div>
-        
-        <div style="margin-bottom: 30px;">
-          <h3 style="color: #1e40af; font-size: 18px; margin-bottom: 15px;">PROJECT PHASES</h3>
-          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
-            ${project.additionalPhotos.map(photo => `
-              <div style="background: #f8fafc; padding: 15px; border-radius: 6px; border: 1px solid #e2e8f0;">
-                <h4 style="color: #374151; margin: 0 0 8px 0; font-size: 14px;">${photo.title}</h4>
-                <p style="margin: 0; font-size: 12px; color: #6b7280;">${photo.description}</p>
-              </div>
-            `).join('')}
-          </div>
-        </div>
-        
-        <div style="margin-bottom: 30px;">
-          <h3 style="color: #1e40af; font-size: 18px; margin-bottom: 15px;">TECHNICAL SPECIFICATIONS</h3>
-          <div style="background: #f8fafc; padding: 20px; border-radius: 8px; font-size: 14px;">
-            <div style="margin-bottom: 8px;"><strong>Project Category:</strong> ${project.category}</div>
-            <div style="margin-bottom: 8px;"><strong>Project Complexity:</strong> ${project.teamSize.includes('5') || project.teamSize.includes('6') ? 'High' : project.teamSize.includes('4') ? 'Medium-High' : project.teamSize.includes('3') ? 'Medium' : 'Standard'}</div>
-            <div style="margin-bottom: 8px;"><strong>Quality Standards:</strong> ISO 9001:2015 Compliant</div>
-            <div style="margin-bottom: 8px;"><strong>Safety Standards:</strong> IEC 61439, IEC 62271</div>
-          </div>
-        </div>
-        
-        <div style="margin-bottom: 30px;">
-          <h3 style="color: #1e40af; font-size: 18px; margin-bottom: 15px;">CLIENT FEEDBACK</h3>
-          <div style="background: #fefce8; padding: 20px; border-radius: 8px; border-left: 4px solid #eab308;">
-            <p style="margin: 0; font-style: italic; font-size: 14px; color: #92400e;">"Excellent work quality and professional service. Project completed on time and within budget. The team demonstrated exceptional technical expertise and attention to detail."</p>
-          </div>
-        </div>
-        
-        <div style="margin-bottom: 30px;">
-          <h3 style="color: #1e40af; font-size: 18px; margin-bottom: 15px;">CONTACT INFORMATION</h3>
-          <div style="background: #1e40af; color: white; padding: 20px; border-radius: 8px; text-align: center;">
-            <h4 style="margin: 0 0 15px 0; font-size: 18px;">Jagadeesh PowerFactor</h4>
-            <div style="font-size: 14px; line-height: 1.8;">
-              <div>📞 Phone: +91 893 962 0577</div>
-              <div>📧 Email: info@jagadeeshpowerfactor.com</div>
-              <div>🌐 Website: www.jagadeeshpowerfactor.com</div>
-            </div>
-          </div>
-        </div>
-        
-        <div style="text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #e5e7eb; color: #6b7280; font-size: 12px;">
-          <p style="margin: 5px 0;">Report Generated: ${new Date().toLocaleDateString()}</p>
-          <p style="margin: 5px 0;">Generated By: Jagadeesh PowerFactor Team</p>
-          <p style="margin: 5px 0;">© 2024 Jagadeesh PowerFactor. All rights reserved.</p>
-        </div>
-      `;
-
-      document.body.appendChild(pdfContainer);
-
-      // Convert HTML to canvas
-      const canvas = await html2canvas(pdfContainer, {
-        scale: 2,
-        useCORS: true,
-        allowTaint: true,
-        backgroundColor: '#ffffff'
-      });
-
-      // Remove temporary container
-      document.body.removeChild(pdfContainer);
-
-      // Create PDF
-      const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF('p', 'mm', 'a4');
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = pdf.internal.pageSize.getHeight();
-      const imgWidth = pdfWidth - 20; // 10mm margin on each side
-      const imgHeight = (canvas.height * imgWidth) / canvas.width;
-
-      let heightLeft = imgHeight;
-      let position = 10; // 10mm top margin
-
-      // Add first page
-      pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
-      heightLeft -= (pdfHeight - 20); // Account for margins
-
-      // Add additional pages if needed
-      while (heightLeft >= 0) {
-        position = heightLeft - imgHeight + 10;
-        pdf.addPage();
-        pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
-        heightLeft -= (pdfHeight - 20);
-      }
-
-      // Save PDF
-      const fileName = `Project_Report_${project.title.replace(/\s+/g, '_')}_${project.id.toString().padStart(3, '0')}.pdf`;
-      pdf.save(fileName);
-
-      // Show success message
-      alert(`PDF report for "${project.title}" has been downloaded successfully!`);
-
-    } catch (error) {
-      console.error('Error generating PDF:', error);
-      alert('Error generating PDF. Please try again.');
-    } finally {
-      setIsGeneratingPDF(false);
-    }
-  };
 
   // Function to share project
   const shareProject = (project) => {
@@ -369,34 +207,13 @@ export default function ProjectDetails() {
             )}
           </div>
 
-          {/* Action Buttons */}
+          {/* Share Button */}
           <div className="bg-white rounded-2xl sm:rounded-3xl shadow-xl p-6 sm:p-8 border border-gray-100">
-            <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 text-center">Get Project Report</h3>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button
-                onClick={() => downloadProjectReport(project)}
-                disabled={isGeneratingPDF}
-                className="px-8 py-4 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition-colors flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed text-lg"
-              >
-                {isGeneratingPDF ? (
-                  <>
-                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    Generating PDF...
-                  </>
-                ) : (
-                  <>
-                    <span>📄</span>
-                    Download PDF Report
-                  </>
-                )}
-              </button>
-
+            <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 text-center">Share Project</h3>
+            <div className="flex justify-center">
               <button
                 onClick={() => shareProject(project)}
-                className="px-8 py-4 bg-gray-600 text-white rounded-full font-medium hover:bg-gray-700 transition-colors flex items-center justify-center gap-3 text-lg"
+                className="px-8 py-4 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition-colors flex items-center justify-center gap-3 text-lg"
               >
                 <span>📤</span>
                 Share Project
